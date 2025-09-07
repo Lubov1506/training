@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "color": "white"
+    },
+    {
+        "id": 2,
+        "color": "lightblue"
+    },
+    {
+        "id": 3,
+        "color": "orange"
+    },
+    {
+        "id": 4,
+        "color": "tomato"
+    },
+    {
+        "id": 5,
+        "color": "teal"
+    },
+    {
+        "id": 6,
+        "color": "yellow"
+    },
+    {
+        "id": 7,
+        "color": "indigo"
+    },
+    {
+        "id": 8,
+        "color": "green"
+    },
+    {
+        "id": 9,
+        "color": "purple"
+    },
+    {
+        "id": 10,
+        "color": "pink"
+    },
+    {
+        "id": 11,
+        "color": "red"
+    },
+    {
+        "id": 12,
+        "color": "blue"
+    },
+    {
+        "id": 13,
+        "color": "brown"
+    },
+    {
+        "id": 14,
+        "color": "gray"
+    },
+    {
+        "id": 15,
+        "color": "black"
+    }
+]
