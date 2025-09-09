@@ -1,17 +1,36 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import todosData from "../../assets/todos.json"
 import TodoItem from "../TodoItem/TodoItem"
 import { nanoid } from "nanoid"
+import Modal from "../Modal/Modal"
 const TodoList = () => {
-  const [todos, setTodos] = useState(todosData)
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = window.localStorage.getItem("todos")
+    if (savedTodos !== null) {
+      return JSON.parse(savedTodos)
+    }
+    return todosData
+  })
   const [newTodo, setNewTodo] = useState("")
-
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOpen = () => {
+    setIsOpen(true)
+  }
+  const onClose = () => {
+    setIsOpen(false)
+  }
+  useEffect(() => {
+    window.localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
   const handleDelete = (id) => {
     setTodos((prev) => prev.filter((item) => item.id !== id))
   }
 
   const handleAddTodo = () => {
-    setTodos((prev) => [...prev, { id: nanoid(), newTodo, completed: false }])
+    setTodos((prev) => [
+      ...prev,
+      { id: nanoid(), todo: newTodo, completed: false },
+    ])
     setNewTodo("")
   }
   const handleToggle = (id) => {
@@ -33,31 +52,45 @@ const TodoList = () => {
       prev.map((item) => (item.id === id ? { ...item, todo: newValue } : item))
     )
   }
+
   return (
-    <div className='flex flex-col gap-2 '>
-      <div className='flex gap-1'>
-        <input
-          type='text'
-          className='shadow-2xl border-1'
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-        />
-        <button onClick={handleAddTodo}>Add</button>
-      </div>
-      <ul className='flex flex-col gap-2'>
-        {todos?.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            {...todo}
-            onDelete={handleDelete}
-            onToggle={handleToggle}
-            onRename={handleRename}
+    <>
+      <div className='flex flex-col gap-2 '>
+        <div className='flex gap-1'>
+          <input
+            type='text'
+            className='shadow-2xl border-1'
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
           />
-        ))}
-      </ul>
-      <button onClick={handleRemoveSelected}>Remove completed</button>
-      <button onClick={handleRemoveAll}>Remove all</button>
-    </div>
+          <button onClick={handleAddTodo}>Add</button>
+        </div>
+        <ul className='flex flex-col gap-2'>
+          {todos?.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              {...todo}
+              onDelete={handleDelete}
+              onToggle={handleToggle}
+              onRename={handleRename}
+            />
+          ))}
+        </ul>
+        <button onClick={handleRemoveSelected}>Remove completed</button>
+        <button onClick={handleRemoveAll}>Remove all</button>
+        <button onClick={handleOpen}>Open modal</button>
+      </div>
+      {isOpen && (
+        <Modal onClose={onClose}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, ea.
+            Illo, nam! Explicabo omnis, quisquam qui harum doloremque id est
+            eius nostrum aut reprehenderit culpa neque itaque vitae eveniet
+            atque.
+          </p>
+        </Modal>
+      )}
+    </>
   )
 }
 
