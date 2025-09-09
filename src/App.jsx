@@ -1,11 +1,8 @@
-import ColorPicker from "./components/ColorPicker/ColorPicker"
-import ProductsApp from "./components/ProductsApp/ProductsApp"
-import TodoList from "./components/TodoList/TodoList"
-
+import TodoApp from "./components/TodoApp/TodoApp"
 function App() {
   return (
     <>
-      <ProductsApp />
+      <TodoApp />
     </>
   )
 }

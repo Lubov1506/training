@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import todosData from "../../assets/todos.json"
-import TodoItem from "../TodoItem/TodoItem"
 import { nanoid } from "nanoid"
 import Modal from "../Modal/Modal"
-const TodoList = () => {
+import TodoList from "./TodoList"
+
+const TodoApp = () => {
   const [todos, setTodos] = useState(() => {
     const savedTodos = window.localStorage.getItem("todos")
     if (savedTodos !== null) {
@@ -65,17 +66,12 @@ const TodoList = () => {
           />
           <button onClick={handleAddTodo}>Add</button>
         </div>
-        <ul className='flex flex-col gap-2'>
-          {todos?.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              {...todo}
-              onDelete={handleDelete}
-              onToggle={handleToggle}
-              onRename={handleRename}
-            />
-          ))}
-        </ul>
+        <TodoList
+          todos={todos}
+          handleDelete={handleDelete}
+          handleRename={handleRename}
+          handleToggle={handleToggle}
+        />
         <button onClick={handleRemoveSelected}>Remove completed</button>
         <button onClick={handleRemoveAll}>Remove all</button>
         <button onClick={handleOpen}>Open modal</button>
@@ -94,4 +90,4 @@ const TodoList = () => {
   )
 }
 
-export default TodoList
+export default TodoApp

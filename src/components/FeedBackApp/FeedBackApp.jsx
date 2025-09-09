@@ -1,16 +1,10 @@
-const Feedback = ({ state: { good, neutral, bad } }) => {
-  return (
-    <div className="flex flex-col justify-center items-center">
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-    </div>
-  )
-}
+import { useState } from "react"
+import Description from "./Description"
+import Options from "./Options"
+import Notification from "./Notification"
+import Feedback from "./Feedback"
 
-export default Feedback
-
-/* function App() {
+function FeedBackApp() {
   const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 })
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad
 
@@ -25,4 +19,6 @@ export default Feedback
       {!!totalFeedback && <Feedback state={feedback} />}
     </div>
   )
-} */
+}
+
+export default FeedBackApp

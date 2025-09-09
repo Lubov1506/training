@@ -1,9 +1,9 @@
 import React from "react"
-import StatusItem from "../StatusItem/StatusItem"
-import StatusBlock from "../StatusBlock/StatusBlock"
+import StatusItem from "./StatusItem"
+import StatusBlock from "./StatusBlock"
 
-const Profile = (props) => {
-  const { name, tag, location, image, stats } = props
+const Profile = ({userData}) => {
+  const { name, tag, location, image, stats } = userData
 
   return (
     <div className='w-[300px] border-2 rounded-md mb-4 '>

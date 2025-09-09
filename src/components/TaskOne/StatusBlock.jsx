@@ -1,5 +1,5 @@
 import React from "react"
-import StatusItem from "../StatusItem/StatusItem"
+import StatusItem from "./StatusItem"
 
 const StatusBlock = ({ stats }) => {
   return (
