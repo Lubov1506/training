@@ -15,8 +15,18 @@ const Modal = ({ children, title = "Default modal", onClose }) => {
       }
     }
     document.addEventListener("keydown", handleKeyDown)
+
+    // const intervalId = setInterval(() => {
+    //   console.log("interval")
+    // }, 1000)
+    // const timeoutId = setTimeout(() => {
+    //   console.log("timeout")
+    // }, 3000)
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown)
+      // clearInterval(intervalId)
+      // clearTimeout(timeoutId)
     }
   }, [onClose])
   return (
@@ -24,7 +34,7 @@ const Modal = ({ children, title = "Default modal", onClose }) => {
       className='bg-gray-900/50  w-full h-full top-0 left-0 right-0 bottom-0 fixed flex justify-center items-center'
       onClick={handleBackDropClick}
     >
-      <div className='min-h-[400px] min-w-[300px] bg-gray-200 z-150 rounded-md shadow-2xl absolute text-black px-4 py-2 flex flex-col gap-2'>
+      <div className='min-h-[400px] min-w-[300px] max-w-[400px] bg-gray-200 z-150 rounded-md shadow-2xl absolute text-black px-4 py-2 flex flex-col gap-2'>
         <h1 className='text-center text-lg'>{title}</h1>
         <button
           onClick={onClose}

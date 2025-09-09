@@ -17,7 +17,7 @@ const ColorPicker = () => {
   return (
     <section
       style={{ backgroundColor: color }}
-      className='flex fixed w-full h-full items-center justify-center transition-all '
+      className='flex fixed top-0 left-0 bottom-0 right-0 items-center justify-center transition-all '
     >
       <div className='flex items-center justify-center flex-col gap-2'>
         <h2 className='font-bold'>
