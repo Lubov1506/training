@@ -9,3 +9,5 @@ export * from './Modal/Modal.jsx'
 export * from './ProductsApp/ProductsApp.jsx'
 export * from './TaskOne/TaskOne.jsx'
 export * from './Vote/Vote.jsx'
+
+export * from './ArticlesApp/ArticlesApp.jsx'
