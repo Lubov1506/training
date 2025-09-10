@@ -1,15 +1,14 @@
 import { AddArticle } from "./AddArticle"
-import { FavoriteArticles } from "./FavoriteArticles"
 import { List } from "./List"
 
-export const Outlet = ({ articles, onAddToFav, selectedTab, onDelete }) => {
+export const Outlet = ({ articles, onAddToFav, selectedTab, onDelete, favs, onDeleteFav }) => {
   return (
     <div className='flex py-4 px-2 flex-col gap-2'>
       {selectedTab === "home" && (
         <List articles={articles} onAddToFav={onAddToFav} onDelete={onDelete} />
       )}
       {
-        selectedTab==='favs' && <FavoriteArticles/>
+        selectedTab==='favs' && <List title="Favorites" isFav={true} articles={favs} onDeleteFav={onDeleteFav}/>
       }
       {selectedTab==='add-art' && <AddArticle/>}
     </div>

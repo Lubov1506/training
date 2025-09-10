@@ -66,6 +66,8 @@ export const ArticlesApp = () => {
         selectedTab={selectedTab}
         onAddToFav={handleAddToFav}
         onDelete={handleDeleteArt}
+        favs={favs}
+        onDeleteFav={handleDelFav}
       />
     </div>
   )
