@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 
-const Modal = ({ children, title = "Default modal", onClose }) => {
+export const Modal = ({ children, title = "Default modal", onClose }) => {
   const handleBackDropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose()
@@ -48,4 +48,3 @@ const Modal = ({ children, title = "Default modal", onClose }) => {
   )
 }
 
-export default Modal

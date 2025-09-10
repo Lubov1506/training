@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import todosData from "../../assets/todos.json"
 import { nanoid } from "nanoid"
-import Modal from "../Modal/Modal"
 import TodoList from "./TodoList"
-
-const TodoApp = () => {
+import { Modal } from "../Modal/Modal"
+export const TodoApp = () => {
   const [todos, setTodos] = useState(() => {
     const savedTodos = window.localStorage.getItem("todos")
     if (savedTodos !== null) {
@@ -89,5 +88,3 @@ const TodoApp = () => {
     </>
   )
 }
-
-export default TodoApp

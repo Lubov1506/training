@@ -4,7 +4,7 @@ import Options from "./Options"
 import Notification from "./Notification"
 import Feedback from "./Feedback"
 
-function FeedBackApp() {
+export const FeedBackApp = () => {
   const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 })
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad
 
@@ -20,5 +20,3 @@ function FeedBackApp() {
     </div>
   )
 }
-
-export default FeedBackApp

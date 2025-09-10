@@ -1,5 +1,5 @@
 import React from "react"
-import Button from "../Button"
+import {Button} from "../Button"
 import { FaRegTrashAlt } from "react-icons/fa"
 import { FaPlus, FaMinus } from "react-icons/fa"
 const CartItem = ({ item, idx, onDelete, onPlus, onMinus }) => {

@@ -5,7 +5,7 @@ import Profile from "./Profile"
 import userData from "../../assets/userdata.json"
 import TransactionHistory from "./TransactionHistory"
 import transactions from "../../assets/transactionsList.json"
-const TaskOne = () => {
+export const TaskOne = () => {
   return (
     <div>
       <Profile userData={userData} />
@@ -15,4 +15,3 @@ const TaskOne = () => {
   )
 }
 
-export default TaskOne

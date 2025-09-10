@@ -1,5 +1,5 @@
+import { TodoItem } from "./TodoItem"
 
-import TodoItem from "./TodoItem"
 const TodoList = ({ todos, handleDelete, handleRename, handleToggle }) => {
   return (
     <ul className='flex flex-col gap-2'>

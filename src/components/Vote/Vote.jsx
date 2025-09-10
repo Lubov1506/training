@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const Vote = () => {
+export const Vote = () => {
   const [options, setOptions] = useState({
     windows: 0,
     mac: 0,
@@ -37,4 +37,3 @@ const Vote = () => {
   )
 }
 
-export default Vote

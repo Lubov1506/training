@@ -1,4 +1,4 @@
-const TodoItem = ({ id, completed, todo, onDelete, onToggle, onRename }) => {
+export const TodoItem = ({ id, completed, todo, onDelete, onToggle, onRename }) => {
   return (
     <li className='flex justify-between gap-2 border-1 rounded-sm p-1  ' key={id}>
       <input
@@ -14,4 +14,3 @@ const TodoItem = ({ id, completed, todo, onDelete, onToggle, onRename }) => {
   )
 }
 
-export default TodoItem

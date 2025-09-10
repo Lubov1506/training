@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const Counter = () => {
+export const Counter = () => {
   const [count, setCount] = useState(() => {
     const savedCount = window.localStorage.getItem("counter")
     return savedCount !== null ? JSON.parse(savedCount) : 0
@@ -63,4 +63,3 @@ const Counter = () => {
   )
 }
 
-export default Counter

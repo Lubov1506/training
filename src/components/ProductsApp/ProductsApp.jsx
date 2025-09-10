@@ -3,7 +3,7 @@ import Header from "./Header"
 import ProductList from "./ProductList"
 import productsData from "../../assets/products.json"
 import Cart from "./Cart"
-const ProductsApp = () => {
+export const ProductsApp = () => {
   const [items, setItems] = useState(productsData)
   const [cart, setCart] = useState(() => {
     const selectedItems = window.localStorage.getItem("cart")
@@ -75,4 +75,3 @@ const ProductsApp = () => {
   )
 }
 
-export default ProductsApp

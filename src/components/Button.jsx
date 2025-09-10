@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import React from "react"
 
-const Button = ({ children, onClick, cn, disabled = false }) => {
+export const Button = ({ children, onClick, cn, disabled = false }) => {
   return (
     <button
       disabled={disabled}
@@ -15,5 +15,3 @@ const Button = ({ children, onClick, cn, disabled = false }) => {
     </button>
   )
 }
-
-export default Button

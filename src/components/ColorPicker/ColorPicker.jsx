@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import colors from "../../assets/colors.json"
 import clsx from "clsx"
-const ColorPicker = () => {
+export const ColorPicker = () => {
   const [color, setColor] = useState(() => {
     const savedColor = window.localStorage.getItem("colorPicker")
     if (savedColor !== null) {
@@ -40,4 +40,3 @@ const ColorPicker = () => {
   )
 }
 
-export default ColorPicker
