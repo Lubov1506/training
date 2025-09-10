@@ -1,15 +1,18 @@
-import React from 'react';
-import friends from '../../assets/friendsList.json'
-import FriendsList from './FriendsList';
-import Profile from './Profile';
-import userData from '../../assets/userdata.json'
+import React from "react"
+import friends from "../../assets/friendsList.json"
+import FriendsList from "./FriendsList"
+import Profile from "./Profile"
+import userData from "../../assets/userdata.json"
+import TransactionHistory from "./TransactionHistory"
+import transactions from "../../assets/transactionsList.json"
 const TaskOne = () => {
-    return (
-        <div>
-            <Profile userData={userData}/>
-             <FriendsList friends={friends} />
-        </div>
-    );
+  return (
+    <div>
+      <Profile userData={userData} />
+      <FriendsList friends={friends} />
+      <TransactionHistory items={transactions} />
+    </div>
+  )
 }
 
-export default TaskOne;
+export default TaskOne

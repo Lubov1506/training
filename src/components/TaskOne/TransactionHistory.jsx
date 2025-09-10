@@ -1,5 +1,5 @@
 import React from "react"
-import TransactionHistoryItem from "../TransactionHistoryItem/TransactionHistoryItem"
+import TransactionHistoryItem from "./TransactionHistoryItem"
 
 const TransactionHistory = ({ items }) => {
   return (
