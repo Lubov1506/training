@@ -9,6 +9,7 @@ export const Card = ({
   onDeleteFav,
 }) => {
   const { title, createdAt, body, author } = article
+
   return (
     <li className='flex flex-col gap-1 shadow-[0_0_10px_0_rgba(0,0,0,0.5)] px-2 pb-1'>
       <h3 className='text-2xl'>{title}</h3>

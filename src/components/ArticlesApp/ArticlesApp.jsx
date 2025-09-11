@@ -18,6 +18,20 @@ export const ArticlesApp = () => {
         createdAt: Date.now(),
         author: "Genry",
       },
+      {
+        id: nanoid(),
+        title: "CSS",
+        body: "consectetur adipisicing elit. Explicabo ex vitae ullam voluptatem asperiores, animi ratione culpa doloremque voluptas? Dolor, eligendi sunt? Iste ad omnis deleniti natus officia a reprehenderit?",
+        createdAt: Date.now(),
+        author: "Penry",
+      },
+      {
+        id: nanoid(),
+        title: "React",
+        body: "consectetur adipisicingconsectetur adipisicing  elit. Explicabo ex vitae ullam voluptatem asperiores, animi ratione culpa doloremque voluptas? Dolor, eligendi sunt? Iste ad omnis deleniti natus officia a reprehenderit?",
+        createdAt: Date.now(),
+        author: "Hank",
+      },
     ]
   })
   const [favs, setFavs] = useState(() => {
@@ -59,7 +73,7 @@ export const ArticlesApp = () => {
     }
   }
   return (
-    <div className='grid  grid-cols-[300px_1fr] h-screen gap-4'>
+    <div className='grid  grid-cols-[300px_1fr] h-screen'>
       <SideBar onChangeTab={setSelectedTab} />
       <Outlet
         articles={articles}
