@@ -5,11 +5,12 @@ export const FormInput = ({
   placeholder = "Title",
   value,
   setValue = console.log("not fn"),
-  cn
+  cn,
 }) => {
   return (
     <input
-    className={clsx('bg-white p-2 text-5xl', cn)}
+      style={{ fontSize: "26px" }}
+      className={clsx("bg-white p-2 text-5xl", cn)}
       type={type}
       placeholder={placeholder}
       value={value}

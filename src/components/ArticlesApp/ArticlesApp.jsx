@@ -5,6 +5,7 @@ import { nanoid } from "nanoid"
 import { Outlet } from "./Outlet"
 import { Modal } from "../Modal/Modal"
 import { AddArticleForm } from "./AddArticleForm"
+import articlesList from "../../assets/articles.json"
 
 export const ArticlesApp = () => {
   const [articles, setArticles] = useState(() => {
@@ -12,29 +13,7 @@ export const ArticlesApp = () => {
     if (savedArts !== null && JSON.parse(savedArts).length) {
       return JSON.parse(savedArts)
     }
-    return [
-      {
-        id: nanoid(),
-        title: "JS",
-        body: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo ex vitae ullam voluptatem asperiores, animi ratione culpa doloremque voluptas? Dolor, eligendi sunt? Iste ad omnis deleniti natus officia a reprehenderit?",
-        createdAt: Date.now(),
-        author: "Genry",
-      },
-      {
-        id: nanoid(),
-        title: "CSS",
-        body: "consectetur adipisicing elit. Explicabo ex vitae ullam voluptatem asperiores, animi ratione culpa doloremque voluptas? Dolor, eligendi sunt? Iste ad omnis deleniti natus officia a reprehenderit?",
-        createdAt: Date.now(),
-        author: "Penry",
-      },
-      {
-        id: nanoid(),
-        title: "React",
-        body: "consectetur adipisicingconsectetur adipisicing  elit. Explicabo ex vitae ullam voluptatem asperiores, animi ratione culpa doloremque voluptas? Dolor, eligendi sunt? Iste ad omnis deleniti natus officia a reprehenderit?",
-        createdAt: Date.now(),
-        author: "Hank",
-      },
-    ]
+    return articlesList
   })
   const [favs, setFavs] = useState(() => {
     const savedFavs = window.localStorage.getItem("fav-arts")
@@ -49,7 +28,15 @@ export const ArticlesApp = () => {
     }
     return "home"
   })
+  const [searchStr, setSearchStr] = useState(() => {
+    const saveSearchStr = window.localStorage.getItem("search")
+    if (saveSearchStr !== null) {
+      return JSON.parse(saveSearchStr)
+    }
+    return ""
+  })
   const [isOpen, setIsOpen] = useState(false)
+  const [sortType, setSortType] = useState("")
 
   const openModal = () => setIsOpen(true)
   const closeModal = () => setIsOpen(false)
@@ -60,7 +47,8 @@ export const ArticlesApp = () => {
   }, [articles, favs])
   useEffect(() => {
     window.localStorage.setItem("tab", JSON.stringify(selectedTab))
-  }, [selectedTab])
+    window.localStorage.setItem("search", JSON.stringify(searchStr))
+  }, [searchStr, selectedTab])
 
   const handleAddToFav = (art) => {
     const isExist = favs.some((item) => item.id === art.id)
@@ -79,23 +67,45 @@ export const ArticlesApp = () => {
     }
   }
   const handleAddArticle = (data) => {
-    console.log(data)
-
     setArticles((prev) => [
       ...prev,
       { ...data, id: nanoid(), createdAt: Date.now() },
     ])
   }
+
+  const filteredArticles = articles.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchStr.toLowerCase()) ||
+      item.body.toLowerCase().includes(searchStr.toLowerCase())
+  )
+
+  const sortedArticles = () => {
+    switch (sortType) {
+      case "newest":
+        return filteredArticles.sort((a, b) => b.createdAt - a.createdAt)
+      case "oldest":
+        return filteredArticles.sort((a, b) => a.createdAt - b.createdAt)
+      case "a-z":
+        return filteredArticles.sort((a, b) => a.title.localeCompare(b.title))
+      case "z-a":
+        return filteredArticles.sort((a, b) => b.title.localeCompare(a.title))
+      default:
+        return filteredArticles
+    }
+  }
   return (
     <div className='grid  grid-cols-[300px_1fr] h-screen'>
       <SideBar onChangeTab={setSelectedTab} openModal={openModal} />
       <Outlet
-        articles={articles}
+        articles={sortedArticles()}
         selectedTab={selectedTab}
         onAddToFav={handleAddToFav}
         onDelete={handleDeleteArt}
         favs={favs}
         onDeleteFav={handleDelFav}
+        searchValue={searchStr}
+        onChangeSearchStr={setSearchStr}
+        setSortType={setSortType}
       />
       {isOpen && (
         <Modal onClose={closeModal}>
