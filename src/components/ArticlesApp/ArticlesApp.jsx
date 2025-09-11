@@ -73,35 +73,40 @@ export const ArticlesApp = () => {
     ])
   }
 
-  const filteredArticles = articles.filter(
-    (item) =>
-      item.title.toLowerCase().includes(searchStr.toLowerCase()) ||
-      item.body.toLowerCase().includes(searchStr.toLowerCase())
-  )
+  const filteredArticles = (arts) =>
+    arts.filter(
+      (item) =>
+        item.title.toLowerCase().includes(searchStr.toLowerCase()) ||
+        item.body.toLowerCase().includes(searchStr.toLowerCase())
+    )
 
-  const sortedArticles = () => {
+  const sortedArticles = (arts) => {
     switch (sortType) {
       case "newest":
-        return filteredArticles.sort((a, b) => b.createdAt - a.createdAt)
+        return filteredArticles(arts).sort((a, b) => b.createdAt - a.createdAt)
       case "oldest":
-        return filteredArticles.sort((a, b) => a.createdAt - b.createdAt)
+        return filteredArticles(arts).sort((a, b) => a.createdAt - b.createdAt)
       case "a-z":
-        return filteredArticles.sort((a, b) => a.title.localeCompare(b.title))
+        return filteredArticles(arts).sort((a, b) =>
+          a.title.localeCompare(b.title)
+        )
       case "z-a":
-        return filteredArticles.sort((a, b) => b.title.localeCompare(a.title))
+        return filteredArticles(arts).sort((a, b) =>
+          b.title.localeCompare(a.title)
+        )
       default:
-        return filteredArticles
+        return filteredArticles(arts)
     }
   }
   return (
     <div className='grid  grid-cols-[300px_1fr] h-screen'>
       <SideBar onChangeTab={setSelectedTab} openModal={openModal} />
       <Outlet
-        articles={sortedArticles()}
+        articles={sortedArticles(articles)}
         selectedTab={selectedTab}
         onAddToFav={handleAddToFav}
         onDelete={handleDeleteArt}
-        favs={favs}
+        favs={sortedArticles(favs)}
         onDeleteFav={handleDelFav}
         searchValue={searchStr}
         onChangeSearchStr={setSearchStr}

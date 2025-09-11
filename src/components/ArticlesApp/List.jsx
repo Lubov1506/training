@@ -7,6 +7,7 @@ export const List = ({
   onDelete,
   isFav,
   onDeleteFav,
+  favs
 }) => {
   
   return (
@@ -21,6 +22,7 @@ export const List = ({
             onDelete={onDelete}
             isFav={isFav}
             onDeleteFav={onDeleteFav}
+            favs={favs}
           />
         ))}
       </ul>
