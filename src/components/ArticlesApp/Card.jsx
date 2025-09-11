@@ -8,10 +8,13 @@ export const Card = ({
   isFav = false,
   onDeleteFav,
 }) => {
-  const { title, createdAt, body, author } = article
+  const { title, createdAt, body, author, id } = article
 
   return (
-    <li className='flex flex-col gap-1 shadow-[0_0_10px_0_rgba(0,0,0,0.5)] px-2 pb-1'>
+    <li
+      className='flex flex-col gap-1 shadow-[0_0_10px_0_rgba(0,0,0,0.5)] px-2 pb-1'
+      key={id}
+    >
       <h3 className='text-2xl'>{title}</h3>
       <p>{body}</p>
       <div className='flex gap-2 justify-between'>

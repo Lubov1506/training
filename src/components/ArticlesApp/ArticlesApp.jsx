@@ -3,6 +3,8 @@ import { List } from "./List"
 import { SideBar } from "./SideBar"
 import { nanoid } from "nanoid"
 import { Outlet } from "./Outlet"
+import { Modal } from "../Modal/Modal"
+import { AddArticleForm } from "./AddArticleForm"
 
 export const ArticlesApp = () => {
   const [articles, setArticles] = useState(() => {
@@ -47,6 +49,10 @@ export const ArticlesApp = () => {
     }
     return "home"
   })
+  const [isOpen, setIsOpen] = useState(false)
+
+  const openModal = () => setIsOpen(true)
+  const closeModal = () => setIsOpen(false)
 
   useEffect(() => {
     window.localStorage.setItem("fav-arts", JSON.stringify(favs))
@@ -72,9 +78,17 @@ export const ArticlesApp = () => {
       handleDelFav(id)
     }
   }
+  const handleAddArticle = (data) => {
+    console.log(data)
+
+    setArticles((prev) => [
+      ...prev,
+      { ...data, id: nanoid(), createdAt: Date.now() },
+    ])
+  }
   return (
     <div className='grid  grid-cols-[300px_1fr] h-screen'>
-      <SideBar onChangeTab={setSelectedTab} />
+      <SideBar onChangeTab={setSelectedTab} openModal={openModal} />
       <Outlet
         articles={articles}
         selectedTab={selectedTab}
@@ -83,6 +97,11 @@ export const ArticlesApp = () => {
         favs={favs}
         onDeleteFav={handleDelFav}
       />
+      {isOpen && (
+        <Modal onClose={closeModal}>
+          <AddArticleForm onAdd={handleAddArticle} onClose={closeModal} />
+        </Modal>
+      )}
     </div>
   )
 }
