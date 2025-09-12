@@ -9,7 +9,6 @@ export const Modal = ({ children, title = "Default modal", onClose }) => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      console.log(e.key)
       if (e.key === "Escape") {
         onClose()
       }

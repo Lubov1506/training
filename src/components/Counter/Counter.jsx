@@ -10,18 +10,9 @@ export const Counter = () => {
     return savedStep !== null ? JSON.parse(savedStep) : 1
   })
   useEffect(() => {
-    console.log("hello")
-  }, [])
-  useEffect(() => {
     window.localStorage.setItem("counter", count)
     window.localStorage.setItem("step", step)
   }, [count, step])
-  useEffect(() => {
-    console.log("step is changed", step)
-  }, [step])
-  useEffect(() => {
-    console.log("count is changed", count)
-  }, [count])
   const handleMinus = () => setCount((prev) => Number(prev - step))
   const handlePlus = () => setCount((prev) => Number(prev + step))
   const handleReset = () => {

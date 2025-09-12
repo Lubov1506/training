@@ -11,7 +11,7 @@ export const Card = ({
 }) => {
   const { title, createdAt, body, author, id } = article
   const isExist = favs?.some((item) => item.id === id)
-  
+
   return (
     <li
       className='flex flex-col gap-1 shadow-[0_0_10px_0_rgba(0,0,0,0.5)] px-2 pb-1 relative'

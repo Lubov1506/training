@@ -107,6 +107,7 @@ export const ArticlesApp = () => {
         onAddToFav={handleAddToFav}
         onDelete={handleDeleteArt}
         favs={sortedArticles(favs)}
+        isEmptyFav={!favs.length}
         onDeleteFav={handleDelFav}
         searchValue={searchStr}
         onChangeSearchStr={setSearchStr}

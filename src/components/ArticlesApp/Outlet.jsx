@@ -13,6 +13,7 @@ export const Outlet = ({
   searchValue,
   onChangeSearchStr,
   setSortType,
+  isEmptyFav,
 }) => {
   return (
     <div className='flex py-4 px-2 flex-col gap-2'>
@@ -42,6 +43,7 @@ export const Outlet = ({
           articles={favs}
           onDeleteFav={onDeleteFav}
           searchValue={searchValue}
+          isEmptyFav={isEmptyFav}
         />
       )}
       {selectedTab === "add-art" && <AddArticle />}

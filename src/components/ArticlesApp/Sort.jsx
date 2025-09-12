@@ -7,7 +7,8 @@ export const Sort = ({ setSortType }) => {
         onChange={(e) => setSortType(e.target.value)}
         className='p-2 border rounded-sm text-5xl'
         style={{ fontSize: "24px" }}
-      ><option value="">Default sorting</option>
+      >
+        <option value=''>Default sorting</option>
         {typesOfSort.map((type) => (
           <option value={type} key={type} className='text-xl'>
             {type}

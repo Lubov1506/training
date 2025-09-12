@@ -1,5 +1,3 @@
 export const AddArticle = () => {
-  return (
-    <div>AddArticle</div>
-  )
+  return <div>AddArticle</div>
 }
