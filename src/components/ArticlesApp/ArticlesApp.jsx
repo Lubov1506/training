@@ -6,6 +6,7 @@ import { Outlet } from "./Outlet"
 import { Modal } from "../Modal/Modal"
 import { AddArticleForm } from "./AddArticleForm"
 import articlesList from "../../assets/articles.json"
+import { AnimatePresence } from "motion/react"
 
 export const ArticlesApp = () => {
   const [articles, setArticles] = useState(() => {
@@ -113,11 +114,13 @@ export const ArticlesApp = () => {
         onChangeSearchStr={setSearchStr}
         setSortType={setSortType}
       />
-      {isOpen && (
-        <Modal onClose={closeModal}>
-          <AddArticleForm onAdd={handleAddArticle} onClose={closeModal} />
-        </Modal>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <Modal onClose={closeModal}>
+            <AddArticleForm onAdd={handleAddArticle} onClose={closeModal} />
+          </Modal>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
