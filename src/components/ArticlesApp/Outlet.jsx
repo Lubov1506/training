@@ -1,4 +1,3 @@
-import { AddArticle } from "./AddArticle"
 import { List } from "./List"
 import { SearchBar } from "./SearchBar"
 import { Sort } from "./Sort"
@@ -46,7 +45,6 @@ export const Outlet = ({
           isEmptyFav={isEmptyFav}
         />
       )}
-      {selectedTab === "add-art" && <AddArticle />}
     </div>
   )
 }
