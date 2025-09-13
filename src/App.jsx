@@ -1,9 +1,9 @@
-import { ArticlesApp } from "./components"
+import { Form } from "./components"
 
 function App() {
   return (
     <>
-      <ArticlesApp />
+      <Form />
     </>
   )
 }
