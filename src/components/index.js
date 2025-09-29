@@ -11,5 +11,7 @@ export * from "./TaskOne/TaskOne.jsx"
 export * from "./Vote/Vote.jsx"
 export * from "./Form/UncontrolledForm.jsx"
 export * from "./Form/Form.jsx"
+export * from './Form/EmployeesList.jsx'
+export * from './Form/EmployeeApp.jsx'
 
 export * from "./ArticlesApp/ArticlesApp.jsx"

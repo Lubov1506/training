@@ -10,7 +10,7 @@ export const Form = ({ register }) => {
     terms: false,
     gender: "male",
   })
-  console.log(formData)
+  console.log(formData, register)
   const handleChangeInput = (e) => {
     const { name, value } = e.target
     console.log(e.target.type)

@@ -1,0 +1,31 @@
+const skillsList = ["all", "react", "angular", "vue"]
+
+export const EmployeesFilter = () => {
+  return (
+    <div className='bg-gray-200 flex gap-2 p-2 justify-between items-center'>
+      <h1>Filters</h1>
+      <div className=''>
+        <input
+          className='p-1 outline-none shadow-2xl'
+          placeholder='Enter search...'
+         />
+        <label className=''>
+          <input type='checkbox' />
+          <span>Who wants to work</span>
+        </label>
+      </div>
+      <div className='flex gap-2 '>
+        {skillsList.map((radioButtonName) => (
+          <label key={radioButtonName} className="flex gap-1">
+            <input
+              name='radioButtonName'
+              type='radio'
+              value={radioButtonName}
+            />
+            <span>{radioButtonName}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+  )
+}

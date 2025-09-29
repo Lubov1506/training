@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "bio": "Passionate full-stack developer with experience in building scalable applications.",
+    "skills": ["react", "node.js"],
+    "isOpenToWork": true
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "bio": "Frontend engineer specializing in responsive design and modern frameworks.",
+    "skills": ["angular", "typescript"],
+    "isOpenToWork": false
+  },
+  {
+    "id": 3,
+    "name": "Clara Martinez",
+    "email": "clara.martinez@example.com",
+    "bio": "Creative software engineer with a background in UI/UX design.",
+    "skills": ["vue", "css", "html"],
+    "isOpenToWork": true
+  },
+  {
+    "id": 4,
+    "name": "Daniel Lee",
+    "email": "daniel.lee@example.com",
+    "bio": "Backend developer focusing on performance optimization and database design.",
+    "skills": ["node.js", "mongodb", "express"],
+    "isOpenToWork": true
+  },
+  {
+    "id": 5,
+    "name": "Emma Davis",
+    "email": "emma.davis@example.com",
+    "bio": "Enthusiastic developer with a love for building interactive web apps.",
+    "skills": ["react", "redux"],
+    "isOpenToWork": false
+  },
+  {
+    "id": 6,
+    "name": "Frank Wilson",
+    "email": "frank.wilson@example.com",
+    "bio": "Software engineer with a passion for cloud technologies and DevOps practices.",
+    "skills": ["aws", "docker", "kubernetes"],
+    "isOpenToWork": true
+  },
+  {
+    "id": 7,
+    "name": "Grace Kim",
+    "email": "grace.kim@example.com",
+    "bio": "Mobile developer with expertise in cross-platform solutions.",
+    "skills": ["flutter", "dart"],
+    "isOpenToWork": false
+  },
+  {
+    "id": 8,
+    "name": "Henry Brown",
+    "email": "henry.brown@example.com",
+    "bio": "Full-stack engineer passionate about clean code and scalable architecture.",
+    "skills": ["react", "node.js", "graphql"],
+    "isOpenToWork": true
+  },
+  {
+    "id": 9,
+    "name": "Isabella Garcia",
+    "email": "isabella.garcia@example.com",
+    "bio": "Frontend developer with strong design sense and accessibility knowledge.",
+    "skills": ["vue", "tailwindcss"],
+    "isOpenToWork": false
+  },
+  {
+    "id": 10,
+    "name": "Jack Thompson",
+    "email": "jack.thompson@example.com",
+    "bio": "Engineer with experience in real-time applications and WebSockets.",
+    "skills": ["angular", "rxjs"],
+    "isOpenToWork": true
+  }
+]
