@@ -1,15 +1,33 @@
+import clsx from "clsx"
+import { highlightText } from "../../helpers"
 import { Button } from "../Button"
 
-export const EmployeeCard = ({ id, name, email, skills, bio, onDelete }) => {
+export const EmployeeCard = ({
+  id,
+  name,
+  email,
+  skills,
+  bio,
+  onDelete,
+  searchValue,
+  isOpenToWork,
+}) => {
   return (
-    <li className='border-2 rounded-md p-2 flex flex-col gap-1'>
-      <h3 className='font-bold text-2xl '>{name}</h3>
-      <p className='underline'>{email}</p>
-      <p className='text-[12px]'>{bio}</p>
+    <li
+      className={clsx(
+        "border-2 rounded-md p-2 flex flex-col gap-1 ",
+        isOpenToWork && "bg-green-200"
+      )}
+    >
+      <h3 className='font-bold text-2xl '>
+        {highlightText(name, searchValue)}
+      </h3>
+      <p className='underline'>{highlightText(email, searchValue)}</p>
+      <p className='text-[12px]'>{highlightText(bio, searchValue)}</p>
       <ul className='flex flex-wrap gap-2 '>
         {skills.map((skill) => (
           <li key={skill} className='bg-gray-100 rounded-md px-2 py-1'>
-            {skill}
+            {highlightText(skill, searchValue)}
           </li>
         ))}
       </ul>

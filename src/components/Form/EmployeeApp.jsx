@@ -3,6 +3,7 @@ import { EmployeesList } from "./EmployeesList"
 
 import usersList from "../../assets/users.json"
 import { useEffect, useState } from "react"
+import { getFilteredData } from "../../helpers"
 
 export const EmployeeApp = () => {
   const [users, setUsers] = useState(() => {
@@ -12,6 +13,9 @@ export const EmployeeApp = () => {
     }
     return usersList
   })
+  const [searchValue, setSearchValue] = useState("")
+  const [isAvailable, setIsAvailable] = useState(false)
+  const [activeSkill, setActiveSkill] = useState("all")
 
   useEffect(() => {
     window.localStorage.setItem("saved-users", JSON.stringify(users))
@@ -20,10 +24,21 @@ export const EmployeeApp = () => {
   const handleDeleteUser = (id) => {
     return setUsers((prev) => prev.filter((user) => user.id !== id))
   }
+
   return (
     <>
-      <EmployeesFilter />
-      <EmployeesList users={users} onDelete={handleDeleteUser} />
+      <EmployeesFilter
+        setSearchValue={setSearchValue}
+        setIsAvailable={setIsAvailable}
+        isAvailable={isAvailable}
+        activeSkill={activeSkill}
+        setActiveSkill={setActiveSkill}
+      />
+      <EmployeesList
+        users={getFilteredData(users, searchValue, isAvailable, activeSkill)}
+        onDelete={handleDeleteUser}
+        searchValue={searchValue}
+      />
     </>
   )
 }
