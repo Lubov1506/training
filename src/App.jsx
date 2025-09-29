@@ -1,8 +1,8 @@
-import { EmployeeApp } from "./components"
+import { ExampleForm } from "./components/FormWithID/ExampleForm"
 function App() {
   return (
     <>
-      <EmployeeApp />
+      <ExampleForm />
     </>
   )
 }
