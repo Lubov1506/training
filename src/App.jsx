@@ -1,8 +1,9 @@
-import { ExampleForm } from "./components/FormWithID/ExampleForm"
+import { PetFormApp } from "./components/"
+
 function App() {
   return (
     <>
-      <ExampleForm />
+      <PetFormApp />
     </>
   )
 }
