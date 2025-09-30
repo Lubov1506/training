@@ -46,7 +46,7 @@ export const PostsApp = () => {
   return (
     <div>
       <span>Infinity scroll</span>
-      <Button onClick={()=>setIsInfinity(!isInfinity)}>
+      <Button onClick={() => setIsInfinity(!isInfinity)}>
         {isInfinity ? "Disable" : "Enable"}
       </Button>
       <List items={posts} />
@@ -55,7 +55,12 @@ export const PostsApp = () => {
       </Button>
       <Button onClick={handleIncreasePage}>Next page</Button> */}
       <div ref={ref}>
-        <Button onClick={handleChangeSkip}>Load more</Button>
+        <Button
+          onClick={handleChangeSkip}
+          cn={isInfinity && "invisible"}
+        >
+          Load more
+        </Button>
       </div>
     </div>
   )
