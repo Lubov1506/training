@@ -1,5 +1,5 @@
 import React from "react"
-import toCapitalize from "../../helpers/toCapitalize"
+import { toCapitalize } from "../../helpers"
 
 const Options = ({ state, onClick }) => {
   return (

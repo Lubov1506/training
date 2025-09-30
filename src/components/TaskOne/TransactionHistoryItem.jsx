@@ -1,5 +1,5 @@
 import React from "react"
-import toCapitalize from "../../helpers/toCapitalize"
+import {toCapitalize} from "../../helpers/toCapitalize"
 import clsx from "clsx"
 
 const TransactionHistoryItem = ({ type, amount, currency,classname }) => {
