@@ -2,8 +2,12 @@ import axios from "axios"
 
 axios.defaults.baseURL = "https://dummyjson.com/"
 
-export const fetchPosts = async () => {
-  const { data } = await axios.get("posts")
+export const fetchPosts = async (configureParams) => {
+  const { data } = await axios.get("posts", {
+    params: {
+      ...configureParams,
+    },
+  })
   console.log(data)
 
   return data
