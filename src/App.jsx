@@ -1,9 +1,9 @@
-import { PetFormApp } from "./components/"
+import { PetFormApp, PostsApp } from "./components/"
 
 function App() {
   return (
     <>
-      <PetFormApp />
+      <PostsApp />
     </>
   )
 }

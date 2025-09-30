@@ -15,3 +15,4 @@ export * from './Form/EmployeesList.jsx'
 export * from './Form/EmployeeApp.jsx'
 export * from './PetForm/PetFormApp.jsx'
 export * from "./ArticlesApp/ArticlesApp.jsx"
+export * from './PostsApp/PostsApp.jsx'
