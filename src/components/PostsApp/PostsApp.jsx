@@ -3,6 +3,8 @@ import { List } from "./List"
 import { fetchPosts } from "../../services/api"
 import { Button } from "../Button"
 import { useInView } from "react-intersection-observer"
+import { Loader } from "./Loader"
+import { SearchBar } from "./SearchBar"
 export const PostsApp = () => {
   const [posts, setPosts] = useState(
     () => JSON.parse(window.localStorage.getItem("posts")) || []
@@ -13,6 +15,9 @@ export const PostsApp = () => {
   const [limit, setLimit] = useState(5)
   const [isInfinity, setIsInfinity] = useState(false)
 
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+
   const { ref, inView, entry } = useInView({
     threshold: 0,
   })
@@ -20,6 +25,7 @@ export const PostsApp = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
+        setIsLoading(true)
         const { posts } = await fetchPosts({
           limit,
           skip,
@@ -29,6 +35,9 @@ export const PostsApp = () => {
         // setPosts([...posts])
       } catch (err) {
         console.log(err)
+        setIsError(true)
+      } finally {
+        setIsLoading(false)
       }
     }
     getPosts()
@@ -49,16 +58,16 @@ export const PostsApp = () => {
       <Button onClick={() => setIsInfinity(!isInfinity)}>
         {isInfinity ? "Disable" : "Enable"}
       </Button>
+      <SearchBar />
       <List items={posts} />
+      {isLoading && <Loader />}
+      {isError && <span>Something went wrong</span>}
       {/* <Button onClick={handleDecreasePage} disabled={skip < limit}>
         Prev page
       </Button>
       <Button onClick={handleIncreasePage}>Next page</Button> */}
       <div ref={ref}>
-        <Button
-          onClick={handleChangeSkip}
-          cn={isInfinity && "invisible"}
-        >
+        <Button onClick={handleChangeSkip} cn={isInfinity && "invisible"}>
           Load more
         </Button>
       </div>
