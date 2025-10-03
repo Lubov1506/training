@@ -1,10 +1,10 @@
 import { SinglePost } from "./SinglePost"
 
-export const List = ({ items }) => {
+export const List = ({ items,query }) => {
   return (
     <ul className='grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-2 p-2'>
       {items?.map((item) => (
-        <SinglePost key={item.id} {...item} />
+        <SinglePost key={item.id} {...item} query={query} />
       ))}
     </ul>
   )

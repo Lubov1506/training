@@ -19,8 +19,12 @@ export const PostsApp = () => {
   const [query, setQuery] = useState(
     () => JSON.parse(window.localStorage.getItem("query-posts")) || ""
   )
-  const [skip, setSkip] = useState(0)
-  const [limit, setLimit] = useState(5)
+  const [skip, setSkip] = useState(
+    () => JSON.parse(window.localStorage.getItem("skip")) || 0
+  )
+  const [limit, setLimit] = useState(
+    () => JSON.parse(window.localStorage.getItem("limit")) || 5
+  )
   const [isInfinity, setIsInfinity] = useState(false)
 
   const [isLoading, setIsLoading] = useState(false)
@@ -29,9 +33,11 @@ export const PostsApp = () => {
   const { ref, inView } = useInView({
     threshold: 0,
   })
-  // useEffect(() => {
-  //   window.localStorage.setItem("posts", JSON.stringify(posts))
-  // }, [posts])
+  useEffect(() => {
+    window.localStorage.setItem("posts", JSON.stringify(posts))
+    window.localStorage.setItem("limit", JSON.stringify(limit))
+    window.localStorage.setItem("skip", JSON.stringify(skip))
+  }, [limit, posts, skip])
   useEffect(() => {
     window.localStorage.setItem("query-posts", JSON.stringify(query))
   }, [query])
@@ -60,9 +66,9 @@ export const PostsApp = () => {
   const handleChangeSkip = () => {
     setSkip((prev) => prev + limit)
   }
-  useEffect(() => {
-    isInfinity && setSkip((prev) => prev + limit)
-  }, [inView, isInfinity, limit])
+  // useEffect(() => {
+  //   isInfinity && setSkip((prev) => prev + limit)
+  // }, [inView, isInfinity, skip])
 
   const getSearchedPosts = (posts) => {
     return (
@@ -76,12 +82,12 @@ export const PostsApp = () => {
   }
   return (
     <div>
-      <span>Infinity scroll</span>
+      {/* <span>Infinity scroll</span>
       <Button onClick={() => setIsInfinity(!isInfinity)}>
         {isInfinity ? "Disable" : "Enable"}
-      </Button>
+      </Button> */}
       <SearchBar query={query} setQuery={setQuery} />
-      <List items={getSearchedPosts(posts)} />
+      <List items={getSearchedPosts(posts)} query={query} />
       {isLoading && <Loader />}
       {isError && <span>Something went wrong</span>}
       <div ref={ref}>
