@@ -32,13 +32,14 @@ export const ContactItem = ({
           </div>
         </div>
 
-        <div>
-          <Button cnButton='pч-[2px]' onClick={() => onDelete(id)}>
+        <div className="flex flex-col gap-2">
+          <Button size="sm" onClick={() => onDelete(id)}>
             <MdDelete size={14} />
           </Button>
-          <Button onClick={onOpen}>
+          <Button size="sm" onClick={onOpen} >
             <MdEdit size={14} />
           </Button>
+
         </div>
       </li>
       {isOpen && (
