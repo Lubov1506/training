@@ -1,18 +1,22 @@
 import { Field, Form, Formik } from "formik"
 import { Button } from "../Button"
 
-export const SearchBar = ({ searchValue }) => {
+export const SearchBar = ({ query, setQuery }) => {
   const initialValues = {
-    searchValue,
+    query,
   }
 
-  const handleSubmit = () => {}
+  const handleSubmit = (data) => {
+    console.log(data.query)
+    if (!data.query.trim().length) return
+    setQuery(data)
+  }
   return (
     <div>
-      <Formik initialValues={initialValues}>
-        <Form onSubmit={handleSubmit}>
-          <Field placeholder='search...' name='searchValue' />
-          <Button>Search</Button>
+      <Formik onSubmit={handleSubmit} initialValues={initialValues}>
+        <Form>
+          <Field placeholder='search...' name='query' />
+          <Button type='submit'>Search</Button>
         </Form>
       </Formik>
     </div>
