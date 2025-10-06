@@ -12,3 +12,12 @@ export const fetchPosts = async (configureParams) => {
 
   return data
 }
+export const fetchPostsByQuery = async (configureParams) => {
+  const { data } = await axios.get("posts/search", {
+    params: {
+      ...configureParams,
+    },
+  })
+  
+  return data
+}

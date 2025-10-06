@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { List } from "./List"
-import { fetchPosts } from "../../services/api"
+import { fetchPosts, fetchPostsByQuery } from "../../services/api"
 import { Button } from "../Button"
 import { useInView } from "react-intersection-observer"
 import { Loader } from "./Loader"
@@ -14,11 +14,10 @@ export const PostsApp = () => {
     }
     return []
   })
-  console.log(posts)
 
-  const [query, setQuery] = useState(
-    () => JSON.parse(window.localStorage.getItem("query-posts")) || ""
-  )
+
+  const [query, setQuery] = useState("")
+
   const [skip, setSkip] = useState(
     () => JSON.parse(window.localStorage.getItem("skip")) || 0
   )
@@ -38,19 +37,17 @@ export const PostsApp = () => {
     window.localStorage.setItem("limit", JSON.stringify(limit))
     window.localStorage.setItem("skip", JSON.stringify(skip))
   }, [limit, posts, skip])
-  useEffect(() => {
-    window.localStorage.setItem("query-posts", JSON.stringify(query))
-  }, [query])
 
   useEffect(() => {
     const getPosts = async () => {
       try {
         setIsLoading(true)
-        const { posts } = await fetchPosts({
-          limit,
-          skip,
-        })
-        console.log(posts, limit, skip)
+        const { posts } = query
+          ? await fetchPostsByQuery({ limit, skip, q: query })
+          : await fetchPostsByQuery({
+              limit,
+              skip,
+            })
         // setPosts((prev) => [...prev, ...posts])
         setPosts(posts)
       } catch (err) {
@@ -61,7 +58,7 @@ export const PostsApp = () => {
       }
     }
     getPosts()
-  }, [limit, skip])
+  }, [limit, query, skip])
 
   const handleChangeSkip = () => {
     setSkip((prev) => prev + limit)
@@ -70,28 +67,22 @@ export const PostsApp = () => {
   //   isInfinity && setSkip((prev) => prev + limit)
   // }, [inView, isInfinity, skip])
 
-  const getSearchedPosts = (posts) => {
-    return (
-      posts.filter((post) =>
-        post.title.toLowerCase().includes(query.toLowerCase())
-      ) ||
-      posts.filter((post) =>
-        post.body.toLowerCase().includes(query.toLowerCase())
-      )
-    )
+  const handleSetQuery = (query) => {
+    setQuery(query)
+    setPosts([])
   }
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {/* <span>Infinity scroll</span>
       <Button onClick={() => setIsInfinity(!isInfinity)}>
         {isInfinity ? "Disable" : "Enable"}
       </Button> */}
-      <SearchBar query={query} setQuery={setQuery} />
-      <List items={getSearchedPosts(posts)} query={query} />
+      <SearchBar setQuery={handleSetQuery} />
+      <List items={posts} query={query} />
       {isLoading && <Loader />}
       {isError && <span>Something went wrong</span>}
       <div ref={ref}>
-        <Button onClick={handleChangeSkip} cn={isInfinity && "invisible"}>
+        <Button onClick={handleChangeSkip} cn={isInfinity && "invisible"} cnButton='items-center'>
           Load more
         </Button>
       </div>
