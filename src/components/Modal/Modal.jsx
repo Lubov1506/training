@@ -41,7 +41,7 @@ export const Modal = ({ children, title = "Default modal", onClose }) => {
         exit={{ opacity: 0, y: -1400,  transition: { duration: 0.5 } }}
         
       >
-        <h1 className='text-center text-lg'>{title}</h1>
+        {/* <h1 className='text-center text-lg'>{title}</h1> */}
         <button
           onClick={onClose}
           className='absolute right-4  flex justify-center items-center w-7 h-7 cursor-pointer hover:scale-110 transition-all'
