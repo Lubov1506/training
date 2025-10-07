@@ -4,9 +4,12 @@ import App from "./App.jsx"
 import "modern-normalize"
 import "./index.css"
 import { UserProvider } from "./store/UserProvider.jsx"
+import { TodosProvider } from "./store/TodosProvider.jsx"
 
 createRoot(document.getElementById("root")).render(
-  <UserProvider>
-    <App />
-  </UserProvider>
+  <TodosProvider>
+    <UserProvider>
+      <App />
+    </UserProvider>
+  </TodosProvider>
 )
