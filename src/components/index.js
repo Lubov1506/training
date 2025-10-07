@@ -9,10 +9,7 @@ export * from "./Modal/Modal.jsx"
 export * from "./ProductsApp/ProductsApp.jsx"
 export * from "./TaskOne/TaskOne.jsx"
 export * from "./Vote/Vote.jsx"
-export * from "./Form/UncontrolledForm.jsx"
-export * from "./Form/Form.jsx"
-export * from './Form/EmployeesList.jsx'
-export * from './Form/EmployeeApp.jsx'
+export * from './EmployeesApp/EmployeesApp.jsx'
 export * from './PetForm/PetFormApp.jsx'
 export * from "./ArticlesApp/ArticlesApp.jsx"
 export * from './PostsApp/PostsApp.jsx'

@@ -5,7 +5,7 @@ import usersList from "../../assets/users.json"
 import { useEffect, useState } from "react"
 import { getFilteredData } from "../../helpers"
 
-export const EmployeeApp = () => {
+export const EmployeesApp = () => {
   const [users, setUsers] = useState(() => {
     const savedUsers = window.localStorage.getItem("saved-users")
     if (savedUsers !== null && JSON.parse(savedUsers).length) {
@@ -26,7 +26,7 @@ export const EmployeeApp = () => {
   }
 
   return (
-    <>
+    <div className="w-full h-screen">
       <EmployeesFilter
         setSearchValue={setSearchValue}
         setIsAvailable={setIsAvailable}
@@ -39,6 +39,6 @@ export const EmployeeApp = () => {
         onDelete={handleDeleteUser}
         searchValue={searchValue}
       />
-    </>
+    </div>
   )
 }
