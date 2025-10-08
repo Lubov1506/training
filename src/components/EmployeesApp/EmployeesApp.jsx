@@ -26,14 +26,16 @@ export const EmployeesApp = () => {
   }
 
   return (
-    <div className="w-full h-screen">
-      <EmployeesFilter
-        setSearchValue={setSearchValue}
-        setIsAvailable={setIsAvailable}
-        isAvailable={isAvailable}
-        activeSkill={activeSkill}
-        setActiveSkill={setActiveSkill}
-      />
+    <div className='w-full min-h-screen'>
+      <div className='sticky top-0 '>
+        <EmployeesFilter
+          setSearchValue={setSearchValue}
+          setIsAvailable={setIsAvailable}
+          isAvailable={isAvailable}
+          activeSkill={activeSkill}
+          setActiveSkill={setActiveSkill}
+        />
+      </div>
       <EmployeesList
         users={getFilteredData(users, searchValue, isAvailable, activeSkill)}
         onDelete={handleDeleteUser}

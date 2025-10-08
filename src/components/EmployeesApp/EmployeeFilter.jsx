@@ -8,7 +8,7 @@ export const EmployeesFilter = ({
   setActiveSkill,
 }) => {
   return (
-    <div className='bg-gray-200 flex gap-2 p-2 justify-between items-center'>
+    <div className='bg-gray-600 flex gap-2 p-2 px-4 justify-between items-center'>
       <h1>Filters</h1>
       <div className=''>
         <input
