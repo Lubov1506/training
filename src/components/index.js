@@ -15,3 +15,4 @@ export * from "./ArticlesApp/ArticlesApp.jsx"
 export * from './PostsApp/PostsApp.jsx'
 export * from './PhoneBookApp.jsx/PhoneBookApp.jsx'
 export * from "./TodosApp/TodosApp.jsx"
+export * from './GalleryApp/GalleryApp.jsx'
