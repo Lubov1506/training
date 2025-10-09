@@ -7,7 +7,7 @@ export const ImageModal = ({ isOpenModal, chosenPhoto, closeModal }) => {
     <div>
       <Modal
         isOpen={isOpenModal}
-        className='max-h-[80%] max-w-[80%] overflow-hidden border-none p-0 shadow-2xl relative'
+        className='max-h-[80%] max-w-[80%] overflow-hidden border-none p-0 shadow-2xl relative rounded-2xl'
         overlayClassName='flex justify-center items-center fixed inset-0 bg-gray-900/30'
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
@@ -16,7 +16,7 @@ export const ImageModal = ({ isOpenModal, chosenPhoto, closeModal }) => {
         <img
           src={urls.regular}
           alt={alt_description}
-          className='w-full h-full object-center object-cover rounded-2xl'
+          className='\ object-center object-contain '
         />
         <div className=' flex gap-2 justify-between bg-linear-to-t from-gray-950 to-gray-500/0 text-white absolute bottom-0 text-2xl w-full h-fit p-3 pt-5'>
           <p>{description}</p>
