@@ -6,13 +6,18 @@ import "./index.css"
 import { UserProvider } from "./store/UserProvider.jsx"
 import { TodosProvider } from "./store/TodosProvider.jsx"
 import { GalleryProvider } from "./store/GalleryProvider.jsx"
+import { BrowserRouter } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
 
 createRoot(document.getElementById("root")).render(
-  <GalleryProvider>
-    <TodosProvider>
-      <UserProvider>
-        <App />
-      </UserProvider>
-    </TodosProvider>
-  </GalleryProvider>
+  <BrowserRouter>
+    <GalleryProvider>
+      <TodosProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </TodosProvider>
+    </GalleryProvider>
+    <ToastContainer autoClose={1500} />
+  </BrowserRouter>
 )
