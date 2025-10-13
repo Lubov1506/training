@@ -1,16 +1,23 @@
 import { Link, Route, Routes } from "react-router-dom"
-import { About, Home, NotFound } from "./pages"
+import { About, Home, NotFound, UserPage, Users } from "./pages"
 import { Layout } from "./components/Layout"
+import { Company, Mission, Team } from "./components/Nested"
 
 function App() {
   return (
-    <div className='flex flex-col gap-2 w-full min-h-screen text-black items-center bg-gray-200'>
+    <div className='flex flex-col gap-2 w-full min-h-screen  text-black items-center bg-gray-200'>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='about' element={<About />} />
+          <Route path='about' element={<About />}>
+            <Route index path='team' element={<Team />} />
+            <Route path='mission' element={<Mission />} />
+            <Route path='company' element={<Company />} />
+          </Route>
+          <Route path='users' element={<Users />} />
+          <Route path='users/:userId' element={<UserPage />} />
         </Route>
-          <Route path='*' element={<NotFound />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   )

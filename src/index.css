@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.active {
+  color: red;
+}
+.aboutActive{
+  color: white;
+  font-weight: bold;
+}
