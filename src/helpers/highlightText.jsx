@@ -6,7 +6,7 @@ export const highlightText = (text, query) => {
 
   return parts.map((part, i) =>
     part.toLowerCase() === query.toLowerCase() ? (
-      <mark key={i} className='bg-yellow-300'>
+      <mark key={i} className='bg-teal-200'>
         {part}
       </mark>
     ) : (

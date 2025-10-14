@@ -1,4 +1,4 @@
-import { Link, Outlet, useParams } from "react-router-dom"
+import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchOneUser } from "../services/usersPosts/api"
 import { useEffect, useState } from "react"
 import { Loader } from "../components/Loader"
@@ -6,6 +6,8 @@ import { Loader } from "../components/Loader"
 export const UserPage = () => {
   const { userId } = useParams()
   const [user, setUser] = useState(null)
+  const location = useLocation()
+  console.log(location)
 
   useEffect(() => {
     const getUsers = async () => {
@@ -23,18 +25,22 @@ export const UserPage = () => {
   if (!user) return <Loader />
   return (
     <div>
-      <Link className='btn' to='/users'>
+      <Link className='btn' to={location.state}>
         All users
       </Link>
       <div className='pt-4 grid grid-cols-3 gap-4'>
-        <div className="flex flex-col gap-2">
+        <div className='flex flex-col gap-2'>
           <h1 className='text-xl'>Details</h1>
           <p className='text-xl font-bold'>
             {user.firstName} {user.lastName}
           </p>
-          <div className="flex justify-center items-center">
-
-          <img src={user.image} alt={user.alt} width={200} className="items-center"/>
+          <div className='flex justify-center items-center'>
+            <img
+              src={user.image}
+              alt={user.alt}
+              width={200}
+              className='items-center'
+            />
           </div>
           <div className='flex flex-col gap-2 '>
             <div className='flex justify-between gap-2 '>
@@ -58,15 +64,17 @@ export const UserPage = () => {
                 {user.email}
               </a>
             </div>
-
-          </div >
-          <div className="flex gap-2">
-
-          <Link to='info' className="btn">User info</Link>
-          <Link to='posts' className="btn">Show posts</Link>
+          </div>
+          <div className='flex gap-2'>
+            <Link to='info' className='btn'>
+              User info
+            </Link>
+            <Link to='posts' className='btn'>
+              Show posts
+            </Link>
           </div>
         </div>
-        <div className="col-span-2 max-w-[500px]">
+        <div className='col-span-2 max-w-[500px]'>
           <Outlet />
         </div>
       </div>
