@@ -4,7 +4,7 @@ import { useUsers } from "../../store/hooks"
 
 export const UserItem = ({ id, firstName, lastName, company, email }) => {
   const location = useLocation()
-  console.log(location)
+
   const { query } = useUsers()
   return (
     <li className='flex flex-col gap-2 rounded-md shadow-sm p-2'>

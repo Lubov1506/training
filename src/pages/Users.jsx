@@ -11,8 +11,6 @@ export const Users = () => {
     const getUsers = async () => {
       try {
         const users = await fetchUsers()
-        console.log(users)
-
         setUsers(users)
       } catch (e) {
         console.log(e)
@@ -32,7 +30,11 @@ export const Users = () => {
           setSearchParams(e.target.value ? { query: e.target.value } : {})
         }
       />
-      {query && !users.length && <p className="mt-2 font-semibold bg-gray-500 flex w-fit p-3 py-2 text-white rounded-md">Not found any users</p>}
+      {query && !users.length && (
+        <p className='mt-2 font-semibold bg-gray-500 flex w-fit p-3 py-2 text-white rounded-md'>
+          Not found any users
+        </p>
+      )}
       <ul className='grid grid-cols-2 gap-4'>
         {users?.map((user) => (
           <UserItem key={user.id} {...user} />

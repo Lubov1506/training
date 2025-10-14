@@ -22,7 +22,6 @@ export const fetchOneUser = async (id) => {
 export const fetchOneUserPosts = async (id) => {
   try {
     const { data } = await axios.get(`users/${id}/posts`)
-    console.log(data);
     
     return data
   } catch (e) {

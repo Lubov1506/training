@@ -7,12 +7,11 @@ import { Loader } from "../Loader"
 export const Posts = () => {
   const { userId } = useParams()
   const [posts, setPosts] = useState(null)
-  console.log(userId)
+
   useEffect(() => {
     const getUserPosts = async () => {
       try {
         const { posts } = await fetchOneUserPosts(userId)
-        console.log(posts)
 
         setPosts(posts)
       } catch (e) {
@@ -30,7 +29,6 @@ export const Posts = () => {
         {posts.length ? (
           <ul className='flex flex-col gap-4 '>
             {posts.map((post) => {
-              console.log(post)
               return <SinglePost key={post.id} {...post} />
             })}
           </ul>

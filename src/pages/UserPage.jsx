@@ -1,13 +1,14 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchOneUser } from "../services/usersPosts/api"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Loader } from "../components/Loader"
 
 export const UserPage = () => {
   const { userId } = useParams()
   const [user, setUser] = useState(null)
   const location = useLocation()
-  console.log(location)
+  const goBackRef = useRef(location.state || "/users")
+  console.log(goBackRef.current)
 
   useEffect(() => {
     const getUsers = async () => {
@@ -20,13 +21,12 @@ export const UserPage = () => {
     }
     getUsers()
   }, [userId])
-  console.log(user)
 
   if (!user) return <Loader />
   return (
     <div>
-      <Link className='btn' to={location.state}>
-        All users
+      <Link className='btn' to={goBackRef.current}>
+        Go back
       </Link>
       <div className='pt-4 grid grid-cols-3 gap-4'>
         <div className='flex flex-col gap-2'>

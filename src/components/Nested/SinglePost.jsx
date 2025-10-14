@@ -1,9 +1,7 @@
 import { FaEye } from "react-icons/fa"
 import { BiSolidLike, BiSolidDislike } from "react-icons/bi"
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 export const SinglePost = ({ id, title, reactions, views, body, tags }) => {
-  console.log(body)
-const params = useParams()
 
   return (
     <li key={id} className='flex flex-col gap-2 p-2 px-3 shadow-md'>

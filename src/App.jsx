@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom"
+import { Link, Navigate, Route, Routes } from "react-router-dom"
 import { About, Home, NotFound, UserPage, Users } from "./pages"
 import { Layout } from "./components/Layout"
 import { Company, Mission, Team } from "./components/Nested"
@@ -37,7 +37,7 @@ function App() {
             </Route>
           </Route>
         </Route>
-        <Route path='*' element={<NotFound />} />
+        <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
     </div>
   )
