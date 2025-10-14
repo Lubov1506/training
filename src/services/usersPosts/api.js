@@ -19,3 +19,23 @@ export const fetchOneUser = async (id) => {
     console.log(e)
   }
 }
+export const fetchOneUserPosts = async (id) => {
+  try {
+    const { data } = await axios.get(`users/${id}/posts`)
+    console.log(data);
+    
+    return data
+  } catch (e) {
+    console.log(e)
+  }
+}
+export const fetchUserPostById = async ( postId) => {
+  try {
+    const { data } = await axios.get(`posts/${postId}`)
+    console.log(data);
+    
+    return data
+  } catch (e) {
+    console.log(e)
+  }
+}
