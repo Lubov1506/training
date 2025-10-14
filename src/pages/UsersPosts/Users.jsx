@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { useUsers } from "../store/hooks"
-import { fetchUsers } from "../services/usersPosts/api"
-import { UserItem } from "../components/Nested/UserItem"
-import { Loader } from "../components/Loader"
+import { useUsers } from "../../store/hooks"
+import { fetchUsers } from "../../services/usersPosts/api"
+import { UserItem } from "../../components/Nested/UserItem"
+import { Loader } from "../../components/Loader"
 
 export const Users = () => {
   const { users, setUsers, query, setSearchParams } = useUsers()

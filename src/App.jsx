@@ -4,19 +4,36 @@ import { Layout } from "./components/Layout"
 import { Company, Mission, Team } from "./components/Nested"
 import { Posts } from "./components/Nested/Posts"
 import { PostInfo } from "./components/Nested/PostInfo"
+import { Login } from "./pages/UsersPosts/Login"
+import { PrivateRoute } from "./Routes/PrivateRoute"
 
 function App() {
   return (
     <div className='flex flex-col gap-2 w-full min-h-screen  text-black items-center bg-gray-200'>
       <Routes>
-        <Route path='/' element={<Layout />}>
+        <Route
+          path='/'
+          element={
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
+          }
+        >
           <Route index element={<Home />} />
           <Route path='about' element={<About />}>
             <Route index path='team' element={<Team />} />
             <Route path='mission' element={<Mission />} />
             <Route path='company' element={<Company />} />
           </Route>
-          <Route path='users' element={<Users />} />
+          <Route
+            path='users'
+            element={
+              <PrivateRoute>
+                <Users />
+              </PrivateRoute>
+            }
+          />
+
           <Route path='users/:userId' element={<UserPage />}>
             <Route
               path='info'
@@ -37,7 +54,8 @@ function App() {
             </Route>
           </Route>
         </Route>
-        <Route path='*' element={<Navigate to='/' replace />} />
+        <Route path='/login' element={<Login />} />
+        {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
       </Routes>
     </div>
   )

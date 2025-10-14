@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom"
-import { addActiveClass } from "../helpers"
+import { addActiveClass } from "../../helpers"
 
 export const About = () => {
   return (

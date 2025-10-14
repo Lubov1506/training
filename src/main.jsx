@@ -9,18 +9,21 @@ import { GalleryProvider } from "./store/GalleryProvider.jsx"
 import { BrowserRouter } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import { UsersProvider } from "./store/UsersProvider.jsx"
+import { AuthProvider } from "./store/AuthProvider.jsx"
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <UsersProvider>
-      <GalleryProvider>
-        <TodosProvider>
-          <UserProvider>
-            <App />
-          </UserProvider>
-        </TodosProvider>
-      </GalleryProvider>
-    </UsersProvider>
+    <AuthProvider>
+      <UsersProvider>
+        <GalleryProvider>
+          <TodosProvider>
+            <UserProvider>
+              <App />
+            </UserProvider>
+          </TodosProvider>
+        </GalleryProvider>
+      </UsersProvider>
+    </AuthProvider>
     <ToastContainer autoClose={1500} />
   </BrowserRouter>
 )
