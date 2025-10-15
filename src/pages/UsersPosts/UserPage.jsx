@@ -24,11 +24,11 @@ const UserPage = () => {
 
   if (!user) return <Loader />
   return (
-    <div>
+    <div >
       <Link className='btn' to={goBackRef.current}>
         Go back
       </Link>
-      <div className='pt-4 grid grid-cols-3 gap-4'>
+      <div className='pt-4 gap-4 flex flex-col md:flex-row'>
         <div className='flex flex-col gap-2'>
           <h1 className='text-xl'>Details</h1>
           <p className='text-xl font-bold'>
@@ -74,7 +74,7 @@ const UserPage = () => {
             </Link>
           </div>
         </div>
-        <div className='col-span-2 max-w-[500px]'>
+        <div className='max-w-[500px]'>
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>

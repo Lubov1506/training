@@ -3,21 +3,30 @@ import { useUsers } from "../../store/hooks"
 import { fetchUsers } from "../../services/usersPosts/api"
 import { Loader } from "../../components/Loader"
 import { UserItem } from "../../components/Nested"
+import { useHttp } from "../../hooks/useHttp"
 
 const Users = () => {
   const { users, setUsers, query, setSearchParams } = useUsers()
 
+  const [loading, error, data] = useHttp( fetchUsers )
+
   useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const users = await fetchUsers()
-        setUsers(users)
-      } catch (e) {
-        console.log(e)
-      }
+    if (data) {
+      setUsers(data)
     }
-    getUsers()
-  }, [setUsers])
+  }, [data, setUsers])
+
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     try {
+  //       const users = await fetchUsers()
+  //       setUsers(users)
+  //     } catch (e) {
+  //       console.log(e)
+  //     }
+  //   }
+  //   getUsers()
+  // }, [setUsers])
   if (!users) return <Loader />
   return (
     <>
