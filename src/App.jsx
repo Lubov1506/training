@@ -5,7 +5,7 @@ import { Company, Mission, Team } from "./components/Nested"
 import { Posts } from "./components/Nested/Posts"
 import { PostInfo } from "./components/Nested/PostInfo"
 import { Login } from "./pages/UsersPosts/Login"
-import { PrivateRoute } from "./Routes/PrivateRoute"
+import { PrivateRoute } from "./routes/PrivateRoute"
 
 function App() {
   return (
@@ -25,14 +25,7 @@ function App() {
             <Route path='mission' element={<Mission />} />
             <Route path='company' element={<Company />} />
           </Route>
-          <Route
-            path='users'
-            element={
-              <PrivateRoute>
-                <Users />
-              </PrivateRoute>
-            }
-          />
+          <Route path='users' element={<Users />} />
 
           <Route path='users/:userId' element={<UserPage />}>
             <Route
