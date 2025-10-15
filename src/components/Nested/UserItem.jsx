@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import { highlightText } from "../../helpers"
 import { useUsers } from "../../store/hooks"
 
-export const UserItem = ({ id, firstName, lastName, company, email }) => {
+const UserItem = ({ id, firstName, lastName, company, email }) => {
   const location = useLocation()
 
   const { query } = useUsers()
@@ -21,3 +21,4 @@ export const UserItem = ({ id, firstName, lastName, company, email }) => {
     </li>
   )
 }
+export default UserItem

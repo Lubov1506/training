@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom"
 import { addActiveClass } from "../../helpers"
 
-export const About = () => {
+const About = () => {
   return (
     <div>
       <p>About</p>
@@ -29,3 +29,4 @@ export const About = () => {
     </div>
   )
 }
+export default About

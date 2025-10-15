@@ -3,10 +3,10 @@ import { useAuth } from "../../store/hooks"
 import { Navigate, useLocation } from "react-router-dom"
 import { useRef } from "react"
 
-export const Login = () => {
+const Login = () => {
   const { login, isLoggedIn } = useAuth()
   const location = useLocation()
-  const goBackRef = useRef(location.state) || '/'
+  const goBackRef = useRef(location.state) || "/"
   const initialValues = { email: "", password: "" }
   const handleSubmit = (values, options) => {
     login(values)
@@ -58,3 +58,4 @@ export const Login = () => {
     </div>
   )
 }
+export default Login

@@ -1,7 +1,7 @@
 import { FaEye } from "react-icons/fa"
 import { BiSolidLike, BiSolidDislike } from "react-icons/bi"
 import { Link } from "react-router-dom"
-export const SinglePost = ({ id, title, reactions, views, body, tags }) => {
+const SinglePost = ({ id, title, reactions, views, body, tags }) => {
 
   return (
     <li key={id} className='flex flex-col gap-2 p-2 px-3 shadow-md'>
@@ -38,7 +38,7 @@ export const SinglePost = ({ id, title, reactions, views, body, tags }) => {
     </li>
   )
 }
-
+export default SinglePost
 // body: "He swung back the fishing pole and cast the line which ell 25 feet away into the river. The lure landed in the perfect spot and he was sure he would soon get a bite. He never expected that the bite would come from behind in the form of a bear."
 // id: 32
 // reactions: {likes: 227, dislikes: 3}

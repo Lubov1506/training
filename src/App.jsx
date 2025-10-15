@@ -1,11 +1,18 @@
-import { Link, Navigate, Route, Routes } from "react-router-dom"
-import { About, Home, NotFound, UserPage, Users } from "./pages"
+import { lazy } from "react"
+import { Route, Routes } from "react-router-dom"
 import { Layout } from "./components/Layout"
-import { Company, Mission, Team } from "./components/Nested"
-import { Posts } from "./components/Nested/Posts"
-import { PostInfo } from "./components/Nested/PostInfo"
-import { Login } from "./pages/UsersPosts/Login"
 import { PrivateRoute } from "./routes/PrivateRoute"
+
+const Home = lazy(() => import("./pages/UsersPosts/Home"))
+const About = lazy(() => import("./pages/UsersPosts/About"))
+const UserPage = lazy(() => import("./pages/UsersPosts/UserPage"))
+const Users = lazy(() => import("./pages/UsersPosts/Users"))
+const Login = lazy(() => import("./pages/UsersPosts/Login"))
+const Company = lazy(() => import("./components/Nested/Company"))
+const Mission = lazy(() => import("./components/Nested/Mission"))
+const Team = lazy(() => import("./components/Nested/Team"))
+const Posts = lazy(() => import("./components/Nested/Posts"))
+const PostInfo = lazy(() => import("./components/Nested/PostInfo"))
 
 function App() {
   return (

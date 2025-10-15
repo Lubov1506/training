@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-export const Company = () => {
+const Company = () => {
   const navigate = useNavigate()
   return (
     <div>
@@ -25,3 +25,4 @@ export const Company = () => {
     </div>
   )
 }
+export default Company

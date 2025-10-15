@@ -4,7 +4,7 @@ import { fetchOneUserPosts } from "../../services/usersPosts/api"
 import { SinglePost } from "./SinglePost"
 import { Loader } from "../Loader"
 
-export const Posts = () => {
+const Posts = () => {
   const { userId } = useParams()
   const [posts, setPosts] = useState(null)
 
@@ -43,3 +43,4 @@ export const Posts = () => {
     </div>
   )
 }
+export default Posts

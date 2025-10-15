@@ -3,7 +3,7 @@ import { fetchOneUser } from "../../services/usersPosts/api"
 import { useEffect, useRef, useState } from "react"
 import { Loader } from "../../components/Loader"
 
-export const UserPage = () => {
+const UserPage = () => {
   const { userId } = useParams()
   const [user, setUser] = useState(null)
   const location = useLocation()
@@ -81,3 +81,4 @@ export const UserPage = () => {
     </div>
   )
 }
+export default UserPage

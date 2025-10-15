@@ -1,4 +1,4 @@
-export const Mission = () => {
+const Mission = () => {
   return (
     <div>
       <h1> Our mission</h1>
@@ -21,3 +21,4 @@ export const Mission = () => {
     </div>
   )
 }
+export default Mission
