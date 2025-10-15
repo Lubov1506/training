@@ -3,7 +3,6 @@ import contactsList from "../../assets/contacts.json"
 import { ContactsList } from "./ContactsList"
 import { Form } from "./Form"
 import { SearchBar } from "./SearchBar"
-import { Modal } from "../Modal/Modal"
 
 export const PhoneBookApp = () => {
   const [contacts, setContacts] = useState(() => {

@@ -5,15 +5,15 @@ export * from "./TodoApp/TodoItem.jsx"
 export * from "./FeedBackApp/FeedBackApp.jsx"
 export * from "./Counter/Counter.jsx"
 export * from "./ColorPicker/ColorPicker.jsx"
-export * from "./Modal/Modal.jsx"
+export { default as Modal } from "./Modal/Modal.jsx"
 export * from "./ProductsApp/ProductsApp.jsx"
 export * from "./TaskOne/TaskOne.jsx"
 export * from "./Vote/Vote.jsx"
-export * from './EmployeesApp/EmployeesApp.jsx'
-export * from './PetForm/PetFormApp.jsx'
+export * from "./EmployeesApp/EmployeesApp.jsx"
+export * from "./PetForm/PetFormApp.jsx"
 export * from "./ArticlesApp/ArticlesApp.jsx"
-export * from './PostsApp/PostsApp.jsx'
-export * from './PhoneBookApp.jsx/PhoneBookApp.jsx'
+export * from "./PostsApp/PostsApp.jsx"
+export * from "./PhoneBookApp.jsx/PhoneBookApp.jsx"
 export * from "./TodosApp/TodosApp.jsx"
-export * from './GalleryApp/GalleryApp.jsx'
-export * from './Layout.jsx'
+export * from "./GalleryApp/GalleryApp.jsx"
+export * from "./Layout.jsx"

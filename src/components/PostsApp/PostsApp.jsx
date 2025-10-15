@@ -5,7 +5,7 @@ import { Button } from "../Button"
 import { useInView } from "react-intersection-observer"
 import { Loader } from "./Loader"
 import { SearchBar } from "./SearchBar"
-import { Modal } from "../Modal/Modal"
+import Modal from "../Modal/Modal"
 import { PostModal } from "./PostModal"
 
 export const PostsApp = () => {

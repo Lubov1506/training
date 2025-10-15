@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import todosData from "../../assets/todos.json"
 import { nanoid } from "nanoid"
 import TodoList from "./TodoList"
-import { Modal } from "../Modal/Modal"
+import Modal from "../Modal/Modal"
 export const TodoApp = () => {
   const [todos, setTodos] = useState(() => {
     const savedTodos = window.localStorage.getItem("todos")

@@ -3,7 +3,7 @@ import { FaPhone } from "react-icons/fa"
 import { MdDelete, MdEdit } from "react-icons/md"
 import { highlightText } from "../../helpers/highlightText"
 import { Button } from "../Button"
-import { Modal } from "../Modal/Modal"
+import Modal from "../Modal/Modal"
 import { useState } from "react"
 import { Form } from "./Form"
 export const ContactItem = ({
@@ -32,18 +32,17 @@ export const ContactItem = ({
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <Button size="sm" onClick={() => onDelete(id)}>
+        <div className='flex flex-col gap-2'>
+          <Button size='sm' onClick={() => onDelete(id)}>
             <MdDelete size={14} />
           </Button>
-          <Button size="sm" onClick={onOpen} >
+          <Button size='sm' onClick={onOpen}>
             <MdEdit size={14} />
           </Button>
-
         </div>
       </li>
       {isOpen && (
-        <Modal onClose={onClose} title="Edit contact">
+        <Modal onClose={onClose} title='Edit contact'>
           <Form contact={{ id, name, lastName, phoneNumber }} isEdit />
         </Modal>
       )}
