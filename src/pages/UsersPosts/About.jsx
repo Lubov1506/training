@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom"
 import { addActiveClass } from "../../helpers"
+import { Suspense } from "react"
+import { Loader } from "../../components/Loader"
 
 const About = () => {
   return (
@@ -25,7 +27,9 @@ const About = () => {
           Our mission
         </NavLink>
       </nav>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </div>
   )
 }

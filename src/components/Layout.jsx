@@ -1,7 +1,8 @@
 import { Link, NavLink, Outlet } from "react-router-dom"
 import { useAuth } from "../store/hooks"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { Modal } from "./Modal/Modal"
+import { Loader } from "./Loader"
 
 export const Layout = () => {
   const { logout } = useAuth()
@@ -46,7 +47,9 @@ export const Layout = () => {
         </Modal>
       )}
       <div className='p-2 '>
-        <Outlet />
+        <Suspense fallback={<Loader/>}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   )

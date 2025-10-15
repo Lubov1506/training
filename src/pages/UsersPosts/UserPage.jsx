@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchOneUser } from "../../services/usersPosts/api"
-import { useEffect, useRef, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import { Loader } from "../../components/Loader"
 
 const UserPage = () => {
@@ -75,7 +75,9 @@ const UserPage = () => {
           </div>
         </div>
         <div className='col-span-2 max-w-[500px]'>
-          <Outlet />
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </div>
       </div>
     </div>

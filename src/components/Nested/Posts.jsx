@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { Outlet, useParams } from "react-router-dom"
 import { fetchOneUserPosts } from "../../services/usersPosts/api"
-import { SinglePost } from "./SinglePost"
 import { Loader } from "../Loader"
+import SinglePost from "./SinglePost"
 
 const Posts = () => {
   const { userId } = useParams()
@@ -38,7 +38,9 @@ const Posts = () => {
       </div>
 
       <div>
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   )
