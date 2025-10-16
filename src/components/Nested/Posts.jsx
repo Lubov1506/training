@@ -9,35 +9,20 @@ const Posts = () => {
   const { userId } = useParams()
   const [posts, setPosts] = useState(null)
 
-  const { loading, error, data } = useHttp(fetchOneUserPosts, userId)
-  // console.log(data);
-  
-  // useEffect(() => {
-  //   if (data?.posts) {
-  //     console.log(data.posts);
-      
-  //     setPosts(data.posts)
-  //   }
-  // }, [data])
-  useEffect(() => {
-    const getUserPosts = async () => {
-      try {
-        const { posts } = await fetchOneUserPosts(userId)
+  const [loading, error, data] = useHttp(fetchOneUserPosts, userId)
 
-        setPosts(posts)
-      } catch (e) {
-        console.log(e)
-      }
+  useEffect(() => {
+    if (data) {
+      setPosts(data)
     }
-    getUserPosts()
-  }, [userId])
+  }, [data])
 
   if (loading) return <Loader />
   return (
     <div className='max-w-[500px] flex flex-col sm:flex-row '>
       <div>
         <h2 className='text-xl font-semibold'>Posts</h2>
-        {posts &&posts.length ? (
+        {posts && posts.length ? (
           <ul className='flex flex-col gap-4 '>
             {posts.map((post) => {
               return <SinglePost key={post.id} {...post} />

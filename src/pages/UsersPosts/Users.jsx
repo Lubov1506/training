@@ -8,7 +8,7 @@ import { useHttp } from "../../hooks/useHttp"
 const Users = () => {
   const { users, setUsers, query, setSearchParams } = useUsers()
 
-  const [loading, error, data] = useHttp( fetchUsers )
+  const [loading, error, data] = useHttp(fetchUsers)
 
   useEffect(() => {
     if (data) {
@@ -16,17 +16,6 @@ const Users = () => {
     }
   }, [data, setUsers])
 
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     try {
-  //       const users = await fetchUsers()
-  //       setUsers(users)
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //   }
-  //   getUsers()
-  // }, [setUsers])
   if (!users) return <Loader />
   return (
     <>

@@ -21,18 +21,23 @@ export const fetchOneUser = async (id) => {
 }
 export const fetchOneUserPosts = async (id) => {
   try {
-    const { data } = await axios.get(`users/${id}/posts`)
-    
-    return data
+    const { data } = await axios.get(`users/${id}/posts`, {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    })
+    console.log(data.posts)
+
+    return [...data.posts]
   } catch (e) {
     console.log(e)
   }
 }
-export const fetchUserPostById = async ( postId) => {
+export const fetchUserPostById = async (postId) => {
   try {
     const { data } = await axios.get(`posts/${postId}`)
-    console.log(data);
-    
+    console.log(data)
+
     return data
   } catch (e) {
     console.log(e)
