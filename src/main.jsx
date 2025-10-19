@@ -10,20 +10,24 @@ import { BrowserRouter } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import { UsersProvider } from "./store/UsersProvider.jsx"
 import { AuthProvider } from "./store/AuthProvider.jsx"
+import { Provider } from "react-redux"
+import { store } from "./redux/store.js"
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <AuthProvider>
-      <UsersProvider>
-        <GalleryProvider>
-          <TodosProvider>
-            <UserProvider>
-              <App />
-            </UserProvider>
-          </TodosProvider>
-        </GalleryProvider>
-      </UsersProvider>
-    </AuthProvider>
-    <ToastContainer autoClose={1500} />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <AuthProvider>
+        <UsersProvider>
+          <GalleryProvider>
+            <TodosProvider>
+              <UserProvider>
+                <App />
+              </UserProvider>
+            </TodosProvider>
+          </GalleryProvider>
+        </UsersProvider>
+      </AuthProvider>
+      <ToastContainer autoClose={1500} />
+    </BrowserRouter>
+  </Provider>
 )

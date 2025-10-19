@@ -2,6 +2,7 @@ import { lazy } from "react"
 import { Route, Routes } from "react-router-dom"
 import { Layout } from "./components/Layout"
 import { PrivateRoute } from "./routes/PrivateRoute"
+import { Counter } from "./components/Counter/Counter"
 
 const Home = lazy(() => import("./pages/UsersPosts/Home"))
 const About = lazy(() => import("./pages/UsersPosts/About"))
@@ -17,8 +18,9 @@ const PostInfo = lazy(() => import("./components/Nested/PostInfo"))
 function App() {
   return (
     <div className='flex flex-col gap-2 w-full min-h-screen  text-black items-center bg-gray-200'>
-      <Routes>
-        <Route
+      <Counter/>
+      {/* <Routes>
+        <Route  
           path='/'
           element={
             <PrivateRoute>
@@ -55,8 +57,7 @@ function App() {
           </Route>
         </Route>
         <Route path='/login' element={<Login />} />
-        {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
-      </Routes>
+      </Routes> */}
     </div>
   )
 }
