@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux"
-import { useTodos } from "../../store/hooks"
 import {
   deleteTodo,
   toggleLiked,
