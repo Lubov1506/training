@@ -1,24 +1,52 @@
 import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { DECREMENT, INCREMENT, RESET } from "../../redux/counter/constants"
+import {
+  decrement,
+  increment,
+  reset,
+  setStep,
+} from "../../redux/counter/actions"
+import { selectCount, selectStep } from "../../redux/counter/selectors"
 
 export const Counter = () => {
-  const [count, setCount] = useState(() => {
-    const savedCount = window.localStorage.getItem("counter")
-    return savedCount !== null ? JSON.parse(savedCount) : 0
-  })
-  const [step, setStep] = useState(() => {
-    const savedStep = window.localStorage.getItem("step")
-    return savedStep !== null ? JSON.parse(savedStep) : 1
-  })
-  useEffect(() => {
-    window.localStorage.setItem("counter", count)
-    window.localStorage.setItem("step", step)
-  }, [count, step])
-  const handleMinus = () => setCount((prev) => Number(prev - step))
-  const handlePlus = () => setCount((prev) => Number(prev + step))
-  const handleReset = () => {
-    setCount(0)
-    setStep(1)
+  const count = useSelector(selectCount)
+  const step = useSelector(selectStep)
+
+  const dispatch = useDispatch()
+
+  const handleMinus = () => {
+    dispatch(decrement())
   }
+  const handlePlus = () => {
+    dispatch(increment())
+  }
+  const handleReset = () => {
+    dispatch(reset())
+  }
+  const handleStep = (e) => {
+    console.log(e.target.value)
+
+    dispatch(setStep(+e.target.value))
+  }
+  // const [count, setCount] = useState(() => {
+  //   const savedCount = window.localStorage.getItem("counter")
+  //   return savedCount !== null ? JSON.parse(savedCount) : 0
+  // })
+  // const [step, setStep] = useState(() => {
+  //   const savedStep = window.localStorage.getItem("step")
+  //   return savedStep !== null ? JSON.parse(savedStep) : 1
+  // })
+  // useEffect(() => {
+  //   window.localStorage.setItem("counter", count)
+  //   window.localStorage.setItem("step", step)
+  // }, [count, step])
+  // const handleMinus = () => setCount((prev) => Number(prev - step))
+  // const handlePlus = () => setCount((prev) => Number(prev + step))
+  // const handleReset = () => {
+  //   setCount(0)
+  //   setStep(1)
+  // }
   return (
     <div className='flex bg-gray-600 w-[300px] rounded md mx-auto my-0 mt-4 '>
       <div className='flex flex-col gap-2 w-full items-center justify-center p-2 '>
@@ -27,7 +55,7 @@ export const Counter = () => {
           type='number'
           className='bg-white rounded-sm'
           value={step}
-          onChange={(e) => setStep(Number(e.target.value))}
+          onChange={handleStep}
         />
         <div className='flex gap-2'>
           <button
@@ -53,4 +81,3 @@ export const Counter = () => {
     </div>
   )
 }
-
