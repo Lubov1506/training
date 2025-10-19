@@ -1,8 +1,10 @@
+import { useSelector } from "react-redux"
 import { useTodos } from "../../store/hooks"
 import { TodoItem } from "./TodoItem"
+import { selectTodos } from "../../redux/todoList/selectors"
 
 export const List = () => {
-  const { todos } = useTodos()
+  const  todos  = useSelector(selectTodos)
   return (
     <>
      

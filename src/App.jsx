@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom"
 import { Layout } from "./components/Layout"
 import { PrivateRoute } from "./routes/PrivateRoute"
 import { Counter } from "./components/Counter/Counter"
+import { TodoApp } from "./components/TodoApp/TodoApp"
+import { TodosApp } from "./components/TodosApp/TodosApp"
 
 const Home = lazy(() => import("./pages/UsersPosts/Home"))
 const About = lazy(() => import("./pages/UsersPosts/About"))
@@ -17,8 +19,8 @@ const PostInfo = lazy(() => import("./components/Nested/PostInfo"))
 
 function App() {
   return (
-    <div className='flex flex-col gap-2 w-full min-h-screen  text-black items-center bg-gray-200'>
-      <Counter/>
+    <div className='flex flex-col gap-2 w-full min-h-screen  items-center bg-gray-200'>
+      <TodosApp/>
       {/* <Routes>
         <Route  
           path='/'

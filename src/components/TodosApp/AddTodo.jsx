@@ -1,11 +1,13 @@
 import { Field, Form, Formik } from "formik"
 import { useTodos } from "../../store/hooks"
+import { useDispatch } from "react-redux"
+import { addTodo } from "../../redux/todoList/actions"
 
 export const AddTodo = () => {
-  const { addTodo } = useTodos()
+  const dispatch = useDispatch()
 
   const handleSubmit = (values, options) => {
-    addTodo(values.todo)
+    dispatch(addTodo(values.todo))
     options.resetForm()
   }
   return (
