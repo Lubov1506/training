@@ -1,5 +1,11 @@
 import { nanoid } from "nanoid"
-import { ADD_TODO, DELETE_TODO, TOGGLE_LIKED, TOGGLE_TODO } from "./constants"
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  EDIT_TODO,
+  TOGGLE_LIKED,
+  TOGGLE_TODO,
+} from "./constants"
 
 export const deleteTodo = (id) => ({ type: DELETE_TODO, payload: id })
 export const addTodo = (todo) => ({
@@ -8,3 +14,4 @@ export const addTodo = (todo) => ({
 })
 export const toggleTodo = (id) => ({ type: TOGGLE_TODO, payload: id })
 export const toggleLiked = (id) => ({ type: TOGGLE_LIKED, payload: id })
+export const editTodo = (todo) => ({ type: EDIT_TODO, payload: todo })

@@ -35,7 +35,7 @@ const Modal = ({ children, title = "Default modal", onClose }) => {
       onClick={handleBackDropClick}
     >
       <motion.div
-        className='min-h-[100px] min-w-[200px] max-w-[400px] bg-gray-200 z-150 rounded-md shadow-2xl absolute text-black px-4 py-4 flex flex-col gap-2'
+        className='min-h-[100px] min-w-[250px] max-w-[600px] bg-gray-200 z-150 rounded-md shadow-2xl absolute text-black px-4 py-4 flex flex-col gap-2'
         initial={{ opacity: 0, y: 400 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -1400, transition: { duration: 0.5 } }}
@@ -47,7 +47,7 @@ const Modal = ({ children, title = "Default modal", onClose }) => {
         >
           <ImCross />
         </button>
-        <div className=' w-2/3 '>{children}</div>
+        <div className=' w-full '>{children}</div>
       </motion.div>
     </div>
   )
