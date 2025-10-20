@@ -1,2 +1,2 @@
-export const selectCount = (state) => state.count
-export const selectStep = (state) => state.steps
+export const selectCount = (state) => state.counter.count
+export const selectStep = (state) => state.counter.steps

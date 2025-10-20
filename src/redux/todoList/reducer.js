@@ -1,10 +1,11 @@
+import { createReducer } from "@reduxjs/toolkit"
 import {
-  ADD_TODO,
-  DELETE_TODO,
-  EDIT_TODO,
-  TOGGLE_LIKED,
-  TOGGLE_TODO,
-} from "./constants"
+  addTodo,
+  deleteTodo,
+  editTodo,
+  toggleLiked,
+  toggleTodo,
+} from "./actions"
 
 const initialState = {
   todos: [
@@ -14,49 +15,74 @@ const initialState = {
     { id: 4, todo: "make something 4", completed: true, liked: true },
   ],
 }
-export const todoReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case DELETE_TODO: {
-      return {
-        ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload),
-      }
-    }
-    case ADD_TODO: {
-      return {
-        ...state,
-        todos: [...state.todos, action.payload],
-      }
-    }
-    case TOGGLE_TODO: {
-      console.log(action.payload)
 
-      return {
-        ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload
-            ? { ...todo, completed: !todo.completed }
-            : todo
-        ),
-      }
-    }
-    case TOGGLE_LIKED: {
-      return {
-        ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload ? { ...todo, liked: !todo.liked } : todo
-        ),
-      }
-    }
-    case EDIT_TODO: {
-      return {
-        ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload.id ? { ...action.payload } : todo
-        ),
-      }
-    }
-    default:
-      return state
-  }
-}
+export const todoReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(addTodo, (state, action) => {
+      state.todos.push(action.payload)
+    })
+    .addCase(deleteTodo, (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload)
+    })
+    .addCase(toggleTodo, (state, action) => {
+      const item = state.todos.find((item) => item.id === action.payload)
+      item.completed = !item.completed
+    })
+    .addCase(toggleLiked, (state, action) => {
+      const item = state.todos.find((todo) => todo.id === action.payload)
+      item.liked = !item.liked
+    })
+    .addCase(editTodo, (state, action) => {
+      const itemIndex = state.todos.findIndex(
+        (todo) => todo.id === action.payload.id
+      )
+      state.todos[itemIndex] = action.payload
+    })
+})
+
+// export const todoReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case deleteTodo.type: {
+//       return {
+//         ...state,
+//         todos: state.todos.filter((todo) => todo.id !== action.payload),
+//       }
+//     }
+//     case addTodo.type: {
+//       return {
+//         ...state,
+//         todos: [...state.todos, action.payload],
+//       }
+//     }
+//     case toggleTodo.type: {
+//       console.log(action.payload)
+
+//       return {
+//         ...state,
+//         todos: state.todos.map((todo) =>
+//           todo.id === action.payload
+//             ? { ...todo, completed: !todo.completed }
+//             : todo
+//         ),
+//       }
+//     }
+//     case toggleLiked.type: {
+//       return {
+//         ...state,
+//         todos: state.todos.map((todo) =>
+//           todo.id === action.payload ? { ...todo, liked: !todo.liked } : todo
+//         ),
+//       }
+//     }
+//     case editTodo.type: {
+//       return {
+//         ...state,
+//         todos: state.todos.map((todo) =>
+//           todo.id === action.payload.id ? { ...action.payload } : todo
+//         ),
+//       }
+//     }
+//     default:
+//       return state
+//   }
+// }

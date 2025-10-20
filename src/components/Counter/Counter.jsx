@@ -48,7 +48,7 @@ export const Counter = () => {
   //   setStep(1)
   // }
   return (
-    <div className='flex bg-gray-600 w-[300px] rounded md mx-auto my-0 mt-4 '>
+    <div className='flex bg-gray-600 w-[300px] rounded md mx-auto my-0 mt-4 text-gray-700'>
       <div className='flex flex-col gap-2 w-full items-center justify-center p-2 '>
         <h1 className='text-white text-3xl font-bold'>{count}</h1>
         <input

@@ -1,17 +1,11 @@
-import { nanoid } from "nanoid"
-import {
-  ADD_TODO,
-  DELETE_TODO,
-  EDIT_TODO,
-  TOGGLE_LIKED,
-  TOGGLE_TODO,
-} from "./constants"
+import { createAction, nanoid } from "@reduxjs/toolkit"
 
-export const deleteTodo = (id) => ({ type: DELETE_TODO, payload: id })
-export const addTodo = (todo) => ({
-  type: ADD_TODO,
-  payload: { todo, id: nanoid(), completed: false, liked: false },
+export const addTodo = createAction("addTodo", (todo) => {
+  return {
+    payload: { todo, id: nanoid(), completed: false, liked: false },
+  }
 })
-export const toggleTodo = (id) => ({ type: TOGGLE_TODO, payload: id })
-export const toggleLiked = (id) => ({ type: TOGGLE_LIKED, payload: id })
-export const editTodo = (todo) => ({ type: EDIT_TODO, payload: todo })
+export const deleteTodo = createAction("deleteTodo")
+export const toggleTodo = createAction("toggleTodo")
+export const toggleLiked = createAction("toggleLiked")
+export const editTodo = createAction("editTodo")
