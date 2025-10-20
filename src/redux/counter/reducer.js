@@ -2,9 +2,9 @@ import { createReducer } from "@reduxjs/toolkit"
 import { decrement, increment, reset, setStep } from "./actions"
 import { DECREMENT, INCREMENT, RESET, SET_STEP } from "./constants"
 
-const initialSate = { count: 0, step: 1 }
+const initialState = { count: 0, step: 1 }
 
-export const counterReducer = createReducer(initialSate, (builder) => {
+export const counterReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(increment, (state, action) => {
       state.count += state.step
@@ -13,7 +13,7 @@ export const counterReducer = createReducer(initialSate, (builder) => {
       state.count -= state.step
     })
     .addCase(reset, (state, action) => {
-      return initialSate
+      return initialState
     })
     .addCase(setStep, (state, action)=>{
       state.step = action.payload

@@ -1,13 +1,13 @@
-import { counterReducer } from "./counter/reducer"
-import { todoReducer } from "./todoList/reducer"
+import { counterReducer } from "./counter/slice"
+import { todoReducer } from "./todoList/slice"
 import { todosFilterReducer } from "./todosFilter/reducer"
 import { configureStore } from "@reduxjs/toolkit"
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    todoList: todoReducer,
+    todos: todoReducer,
     todosFilter: todosFilterReducer,
   },
-  devTools: import.meta.env.MODE !=='production'
+  devTools: import.meta.env.MODE !== "production",
 })

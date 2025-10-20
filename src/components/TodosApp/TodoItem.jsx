@@ -1,13 +1,9 @@
 import { useDispatch } from "react-redux"
-import {
-  deleteTodo,
-  toggleLiked,
-  toggleTodo,
-} from "../../redux/todoList/actions"
 import { FcLike } from "react-icons/fc"
 import { FaRegHeart } from "react-icons/fa"
+import { deleteTodo, toggleLiked, toggleTodo } from "../../redux/todoList/slice"
+
 export const TodoItem = ({ todo, openElement }) => {
-  // const { deleteTodo } = useTodos()
   const dispatch = useDispatch()
   const handleDelete = (id) => dispatch(deleteTodo(id))
 
@@ -25,7 +21,6 @@ export const TodoItem = ({ todo, openElement }) => {
           )}
         </div>
 
-        {/* <h2 className='card-title'>Card title!</h2> */}
         <p>{todo.todo}</p>
         <div className='card-actions flex flex-col gap-2 justify-end w-full'>
           <label className='label cursor-pointer flex justify-between w-full'>

@@ -1,7 +1,6 @@
 import { Field, Form, Formik } from "formik"
-import { useTodos } from "../../store/hooks"
 import { useDispatch } from "react-redux"
-import { addTodo } from "../../redux/todoList/actions"
+import { addTodo } from "../../redux/todoList/slice"
 
 export const AddTodo = () => {
   const dispatch = useDispatch()

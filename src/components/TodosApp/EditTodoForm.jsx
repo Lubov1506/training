@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { editTodo } from "../../redux/todoList/actions"
+import { editTodo } from "../../redux/todoList/slice"
 
 const EditTodoForm = ({ todo, onClose }) => {
   const { register, handleSubmit } = useForm({ defaultValues: todo })
   const dispatch = useDispatch()
-  const submit = (data) => {
-    console.log(data)
 
+  const submit = (data) => {
     dispatch(editTodo(data))
     onClose()
   }
@@ -24,14 +23,22 @@ const EditTodoForm = ({ todo, onClose }) => {
           placeholder='enter new todo...'
           className='input input-bordered input-info w-full text-white '
         />
-        <label className="label cursor-pointer flex justify-between">
-            <span className="label-text">Set as completed</span>
-            <input type="checkbox" className="checkbox checkbox-primary" {...register('completed')} />
-        </label> 
-        <label className="label cursor-pointer flex justify-between">
-            <span className="label-text">Set as liked</span>
-            <input type="checkbox" className="checkbox checkbox-primary" {...register('liked')} />
-        </label> 
+        <label className='label cursor-pointer flex justify-between'>
+          <span className='label-text'>Set as completed</span>
+          <input
+            type='checkbox'
+            className='checkbox checkbox-primary'
+            {...register("completed")}
+          />
+        </label>
+        <label className='label cursor-pointer flex justify-between'>
+          <span className='label-text'>Set as liked</span>
+          <input
+            type='checkbox'
+            className='checkbox checkbox-primary'
+            {...register("liked")}
+          />
+        </label>
         <button className='btn btn-primary' type='submit'>
           Save
         </button>

@@ -1,3 +1,4 @@
+import { Counter } from "./components/Counter/Counter"
 import { TodosApp } from "./components/TodosApp/TodosApp"
 
 

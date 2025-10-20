@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { DECREMENT, INCREMENT, RESET } from "../../redux/counter/constants"
 import {
   decrement,
   increment,
   reset,
+  selectCount,
+  selectStep,
   setStep,
-} from "../../redux/counter/actions"
-import { selectCount, selectStep } from "../../redux/counter/selectors"
+} from "../../redux/counter/slice"
 
 export const Counter = () => {
   const count = useSelector(selectCount)
@@ -25,8 +24,6 @@ export const Counter = () => {
     dispatch(reset())
   }
   const handleStep = (e) => {
-    console.log(e.target.value)
-
     dispatch(setStep(+e.target.value))
   }
   // const [count, setCount] = useState(() => {
