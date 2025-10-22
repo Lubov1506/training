@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage"
 import { todoReducer } from "./todoList/slice"
 import { configureStore } from "@reduxjs/toolkit"
 import { todosFilterReducer } from "./todosFilter/slice"
+import { trelloReducer } from "./trello/slice"
 
 const persistConfig = {
   key: "root",
@@ -25,6 +26,7 @@ export const store = configureStore({
     counter: counterReducer,
     todos: persistReducer(persistConfig, todoReducer),
     todosFilter: todosFilterReducer,
+    trello: trelloReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
