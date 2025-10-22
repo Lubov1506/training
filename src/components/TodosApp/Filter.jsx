@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
-import { selectTodosFilter } from "../../redux/todosFilter/selectors"
 import clsx from "clsx"
-import { changeFilter } from "../../redux/todosFilter/actions"
+import { changeFilter, selectTodosFilter } from "../../redux/todosFilter/slice"
 
 export const Filter = () => {
   const filter = useSelector(selectTodosFilter)
