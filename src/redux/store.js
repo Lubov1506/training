@@ -19,12 +19,16 @@ const persistConfig = {
   version: 1,
   storage,
 }
-
+const trelloConfig = {
+  key: "trello",
+  version: 1,
+  storage,
+}
 export const store = configureStore({
   reducer: {
     todos: persistReducer(persistConfig, todoReducer),
     todosFilter: todosFilterReducer,
-    trello: trelloReducer,
+    trello: persistReducer(trelloConfig, trelloReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
