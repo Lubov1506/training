@@ -13,6 +13,8 @@ import { configureStore } from "@reduxjs/toolkit"
 
 import { transactionsReducer } from "./tracker/transactionsSlice"
 import { categoriesReducer } from "./tracker/categoriesSlice"
+import { version } from "react"
+import { authReducer } from "./tracker/authSlice"
 
 const transactionsConfig = {
   key: "transactions",
@@ -24,10 +26,16 @@ const categoriesConfig = {
   version: 1,
   storage,
 }
+const authConfig = {
+  key: "auth",
+  version: 1,
+  storage,
+}
 export const store = configureStore({
   reducer: {
     transactions: persistReducer(transactionsConfig, transactionsReducer),
     categories: persistReducer(categoriesConfig, categoriesReducer),
+    auth: persistReducer(authConfig, authReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
