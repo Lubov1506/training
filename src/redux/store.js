@@ -1,4 +1,3 @@
-import { counterReducer } from "./counter/slice"
 import {
   persistStore,
   persistReducer,
@@ -23,7 +22,6 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     todos: persistReducer(persistConfig, todoReducer),
     todosFilter: todosFilterReducer,
     trello: trelloReducer,
