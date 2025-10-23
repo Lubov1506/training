@@ -9,26 +9,25 @@ import {
   REGISTER,
 } from "redux-persist"
 import storage from "redux-persist/lib/storage"
-import { todoReducer } from "./todoList/slice"
 import { configureStore } from "@reduxjs/toolkit"
-import { todosFilterReducer } from "./todosFilter/slice"
-import { trelloReducer } from "./trello/slice"
 
-const persistConfig = {
-  key: "root",
+import { transactionsReducer } from "./tracker/transactionsSlice"
+import { categoriesReducer } from "./tracker/categoriesSlice"
+
+const transactionsConfig = {
+  key: "transactions",
   version: 1,
   storage,
 }
-const trelloConfig = {
-  key: "trello",
+const categoriesConfig = {
+  key: "categories",
   version: 1,
   storage,
 }
 export const store = configureStore({
   reducer: {
-    todos: persistReducer(persistConfig, todoReducer),
-    todosFilter: todosFilterReducer,
-    trello: persistReducer(trelloConfig, trelloReducer),
+    transactions: persistReducer(transactionsConfig, transactionsReducer),
+    categories: persistReducer(categoriesConfig, categoriesReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
