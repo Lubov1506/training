@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom"
 import { PrivateRoute } from "./routes/PrivateRoute"
 import { PublicRoute } from "./routes/PublicRoute"
 const Statistics = lazy(() => import("./pages/Tracker/Statistics"))
-const Layout = lazy(() => import("./components/Layout"))
+const Layout = lazy(() => import("./components/TrackerApp/Layout"))
 const Dashboard = lazy(() => import("./pages/Tracker/Dashboard"))
 const Login = lazy(() => import("./pages/Tracker/Login"))
 const Register = lazy(() => import("./pages/Tracker/Register"))

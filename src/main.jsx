@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify"
 import { Provider } from "react-redux"
 import { store, persistor } from "./redux/store.js"
 import { PersistGate } from "redux-persist/integration/react"
+import "react-datepicker/dist/react-datepicker.css";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>

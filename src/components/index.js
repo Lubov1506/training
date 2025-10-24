@@ -1,6 +1,6 @@
 export * from "./Button.jsx"
 export { default as Modal } from "./Modal/Modal.jsx"
-export * from "./Layout.jsx"
+export * from "./TrackerApp/Layout.jsx"
 export { default as TrelloApp } from "./Trello/TrelloApp.jsx"
 export { default as TrackerApp } from "./TrackerApp/TrackerApp.jsx"
-export { default as AuthForm } from "./AuthForm.jsx"
+export { default as AuthForm } from "./TrackerApp/AuthForm.jsx"

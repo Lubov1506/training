@@ -7,7 +7,18 @@
   border-radius: 10px;
   font-weight: bold;
 }
-.aboutActive{
+.aboutActive {
   color: white;
   font-weight: bold;
+}
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
 }
