@@ -9,6 +9,7 @@ const Login = lazy(() => import("./pages/Tracker/Login"))
 const Register = lazy(() => import("./pages/Tracker/Register"))
 const NotFound = lazy(() => import("./pages/Tracker/NotFound"))
 const AddTransaction = lazy(() => import("./pages/Tracker/AddTransaction"))
+const EditTransaction = lazy(() => import("./pages/Tracker/EditTransaction"))
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path='statistics' element={<Statistics />} />
         <Route path='add-transaction' element={<AddTransaction />} />
+        <Route path='edit/:id' element={<EditTransaction />} />
       </Route>
       <Route
         path='/login'
