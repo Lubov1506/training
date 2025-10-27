@@ -1,54 +1,58 @@
+import { nanoid } from "@reduxjs/toolkit"
 import { Field, Form, Formik } from "formik"
-import { useDispatch, useSelector } from "react-redux"
-import {
-  addTransaction,
-  selectExpense,
-  selectIncome,
-} from "../../redux/tracker/transactionsSlice"
-import DatePicker from "react-datepicker"
+import moment from "moment"
 import { useState } from "react"
-import moment from "moment/moment"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate, useParams } from "react-router-dom"
 import {
   selectExpenseCats,
   selectIncomeCats,
 } from "../../redux/tracker/categoriesSlice"
-import { nanoid } from "@reduxjs/toolkit"
-import { useNavigate } from "react-router-dom"
-import { selectCurrentUser } from "../../redux/tracker/authSlice"
+import DatePicker from "react-datepicker"
+import {
+  editTransaction,
+  selectTransactions,
+} from "../../redux/tracker/transactionsSlice"
 
-const AddForm = () => {
+const EditForm = () => {
   const dispatch = useDispatch()
+  const { id } = useParams()
+  const transactions = useSelector(selectTransactions)
+  const editedTransaction = transactions.find((item) => item.id === id)
+  console.log(editedTransaction);
+  
+
   const navigate = useNavigate()
-  const user = useSelector(selectCurrentUser)
   const initialValues = {
-    sum: 0,
-    type: "Expense",
-    category: "",
-    comment: "",
+    ...editedTransaction,
+    sum: Math.abs(editedTransaction.sum)
   }
   const onSubmit = (data, options) => {
+    console.log(data);
+    
     const sum = data.type === "Income" ? +data.sum : -data.sum
     dispatch(
-      addTransaction({
-        owner: user.email,
+      editTransaction({
+        id: editedTransaction.id,
         ...data,
-        id: nanoid(),
         date: moment(startDate).format("YYYY-MM-DD"),
-        sum,
+        sum
       })
     )
-    navigate("/")
+    setTimeout(()=>{
+        navigate('/')
+    }, 1000)
     options.resetForm()
   }
   const onCancel = () => {
-    navigate("/")
+    navigate("/")  
     return initialValues
   }
   const expenseCats = useSelector(selectExpenseCats)
   const incomeCats = useSelector(selectIncomeCats)
   console.log(incomeCats, expenseCats)
 
-  const [startDate, setStartDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(editedTransaction.date)
   return (
     <div className='card bg-base-100 w-1/2 shrink-0 shadow-2xl mx-auto '>
       <div className='card-body w-full '>
@@ -119,7 +123,7 @@ const AddForm = () => {
                   className='btn btn-neutral mt-4 flex-grow'
                   type='submit'
                 >
-                  Add
+                  Edit
                 </button>
                 <button
                   className='btn btn-secondary mt-4 flex-grow'
@@ -137,4 +141,4 @@ const AddForm = () => {
   )
 }
 
-export default AddForm
+export default EditForm

@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import EditForm from "../../components/TrackerApp/EditForm"
 
 const EditTransaction = () => {
   const { id } = useParams()
@@ -7,6 +8,7 @@ const EditTransaction = () => {
   return (
     <div>
       <h2 className='text-2xl font-bold text-center'>Edit transaction</h2>
+      <EditForm />
     </div>
   )
 }
