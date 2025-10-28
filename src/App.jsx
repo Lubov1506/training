@@ -1,6 +1,6 @@
 import { lazy } from "react"
 import { Route, Routes } from "react-router-dom"
-import PrivateRoute from './routes/PrivateRoute.jsx'
+// import PrivateRoute from './routes/PrivateRoute.jsx'
 import PublicRoute from './routes/PublicRoute.jsx'
 const Statistics = lazy(() => import("./pages/Tracker/Statistics"))
 const Layout = lazy(() => import("./components/TrackerApp/Layout"))
@@ -17,9 +17,9 @@ function App() {
       <Route
         path='/'
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <Layout />
-          </PrivateRoute>
+          // </PrivateRoute>
         }
       >
         <Route index element={<Dashboard />} />
