@@ -1,6 +1,6 @@
-import { Navigate, useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { selectIsLoggedIn } from "../redux/tracker/authSlice"
+import { Navigate, useLocation } from "react-router-dom"
 
 const PrivateRoute = ({ children }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn)

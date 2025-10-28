@@ -1,7 +1,7 @@
 import { lazy } from "react"
 import { Route, Routes } from "react-router-dom"
-// import PrivateRoute from './routes/PrivateRoute.jsx'
-// import PublicRoute from './routes/PublicRoute.jsx'
+import PrivateRoute from './routes/PrivateRoute.jsx'
+import PublicRoute from './routes/PublicRoute.jsx'
 const Statistics = lazy(() => import("./pages/Tracker/Statistics"))
 const Layout = lazy(() => import("./components/TrackerApp/Layout"))
 const Dashboard = lazy(() => import("./pages/Tracker/Dashboard"))
@@ -17,9 +17,9 @@ function App() {
       <Route
         path='/'
         element={
-          // <PrivateRoute>
+          <PrivateRoute>
             <Layout />
-          // </PrivateRoute>
+          </PrivateRoute>
         }
       >
         <Route index element={<Dashboard />} />
@@ -30,17 +30,17 @@ function App() {
       <Route
         path='/login'
         element={
-          // <PublicRoute>
+          <PublicRoute>
             <Login />
-          // </PublicRoute>
+          </PublicRoute>
         }
       />
       <Route
         path='/register'
         element={
-          // <PublicRoute>
+          <PublicRoute>
             <Register />
-          // </PublicRoute>
+          </PublicRoute>
         }
       />
       <Route path='*' element={<NotFound />} />
