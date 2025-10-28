@@ -3,6 +3,7 @@ import { selectIsLoggedIn } from "../redux/tracker/authSlice"
 import { Navigate } from "react-router-dom"
 
 export const PublicRoute = ({ children }) => {
-  const  isLoggedIn  = useSelector(selectIsLoggedIn)
+  const isLoggedIn = useSelector(selectIsLoggedIn)
   return isLoggedIn ? <Navigate to='/' replace /> : children
 }
+export default PublicRoute
