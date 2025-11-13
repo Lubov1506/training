@@ -7,15 +7,15 @@ import { ToastContainer } from "react-toastify"
 import { Provider } from "react-redux"
 import { store, persistor } from "./redux/store.js"
 import { PersistGate } from "redux-persist/integration/react"
-import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css"
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
-        <App />
-        <ToastContainer autoClose={1500} />
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>
+  // <Provider store={store}>
+  //   <PersistGate loading={null} persistor={persistor}>
+  <BrowserRouter>
+    <App />
+    <ToastContainer autoClose={1500} />
+  </BrowserRouter>
+  //   </PersistGate>
+  // </Provider>
 )
